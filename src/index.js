@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
+import thunk from 'redux-thunk'
 import userReducer from './reducers/userReducer'
 import booksReducer from './reducers/booksReducer'
 
@@ -12,7 +13,7 @@ const reducer = combineReducers({
   user: userReducer,
   books: booksReducer
 })
-const middleware = applyMiddleware()
+const middleware = applyMiddleware(thunk)
 
 const store = createStore(reducer, middleware)
 
