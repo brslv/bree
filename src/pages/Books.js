@@ -3,8 +3,11 @@ import { connect } from 'react-redux'
 import BooksList from '../components/books/BooksList'
 import { requestBooks } from '../actionCreators/books'
 
+import { handshake } from '../utils/db'
+
 class Books extends Component {
   componentWillMount() {
+    handshake().then(response => console.log(response))
     this.props.requestBooks()
   }
 
