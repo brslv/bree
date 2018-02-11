@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/navigation/Navigation'
 import Books from './Books'
 import Login from './Login'
 

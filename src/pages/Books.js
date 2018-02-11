@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import BooksList from '../components/BooksList'
+import BooksList from '../components/books/BooksList'
 import { requestBooks } from '../actionCreators/books'
 
 class Books extends Component {
