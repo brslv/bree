@@ -1,5 +1,7 @@
-const FETCH_BOOKS = 'fetch_books'
+const REQUEST_BOOKS = 'request_books'
+const RECEIVE_BOOKS = 'receive_books'
 
 export {
-  FETCH_BOOKS
+  REQUEST_BOOKS,
+  RECEIVE_BOOKS
 }
