@@ -1,20 +1,39 @@
-import { API_KEY, APP_SECRET } from '../.data'
+import fetch from 'cross-fetch'
+import {
+  API_KEY,
+  masterAuthHash,
+  username,
+  password
+} from '../.data'
 
 const BASE_URL = 'https://baas.kinvey.com'
 
-const handshake = () => {
-  const authHash = btoa(`${API_KEY}:${APP_SECRET}`)
-  return new Promise((resolve, reject) => {
-    fetch(`${BASE_URL}/appdata/${API_KEY}`, {
-      headers: {
-        'authorization': `Basic ${authHash}`
-      }
-    })
-      .then(r => r.json())
-      .then(json => resolve(json))
+/* general */
+const handshake = function () {
+  return fetch(`${BASE_URL}/appdata/${API_KEY}`, {
+    headers: {
+      'authorization': `Basic ${masterAuthHash()}`
+    }
   })
+    .then(r => r.json())
+}
+
+/* books */
+const getAllBooks = function () {
+  const authHash = btoa(`${username}:${password}`)
+
+  return fetch(`${BASE_URL}/appdata/${API_KEY}/books`, {
+    headers: {
+      'authorization': `Basic ${authHash}`
+    }
+  })
+    .then(r => r.json())
 }
 
 export {
-  handshake
+  /* general */
+  handshake,
+
+  /* books */
+  getAllBooks
 }

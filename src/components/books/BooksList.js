@@ -6,7 +6,7 @@ class BooksList extends Component {
     return (
       <div className="Component--BooksList">
         {this.props.books.map(book => {
-          return <Book key={book.id} title={book.title} description={book.description} />
+          return <Book key={book._id} title={book.title} description={book.description} />
         })}
       </div>
     )
