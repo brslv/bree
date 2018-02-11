@@ -13,9 +13,8 @@ const reducer = combineReducers({
   books: booksReducer
 })
 const middleware = applyMiddleware()
-const initialState = {}
 
-const store = createStore(reducer, initialState, middleware)
+const store = createStore(reducer, middleware)
 
 ReactDOM.render(<App store={store} />, document.getElementById('root'));
 registerServiceWorker();
