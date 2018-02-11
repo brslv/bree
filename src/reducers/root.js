@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import userReducer from './userReducer'
-import booksReducer from './booksReducer'
+import userReducer from './user'
+import booksReducer from './books'
 
 const reducer = combineReducers({
   user: userReducer,
