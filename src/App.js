@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom'
 import Home from './pages/Home'
 import Register from './pages/Register'
+import Login from './pages/Login'
+import Books from './pages/Books'
 import './App.css'
 
 class App extends Component {
@@ -16,6 +18,8 @@ class App extends Component {
           <Router>
             <React.Fragment>
               <Route exact path="/" component={Home} />
+              <Route exact path="/books" component={Books} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </React.Fragment>
           </Router>

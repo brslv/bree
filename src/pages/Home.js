@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Navigation from '../components/navigation/Navigation'
-import Books from './Books'
-import Login from './Login'
+import { Redirect } from 'react-router-dom'
 
 /**
  * This component acts as a controller, deciding which
@@ -9,20 +7,17 @@ import Login from './Login'
  */
 class Home extends Component {
   isLogged() {
-    return false
+    return false 
   }
 
   render() {
     if (this.isLogged()) {
       return (
-        <div>
-          <Navigation />
-          <Books />
-        </div>
+        <Redirect to="/books" />
       )
     } else {
       return (
-        <Login />
+        <Redirect to="/login" />
       )
     }
   }

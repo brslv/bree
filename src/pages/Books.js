@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import BooksList from '../components/books/BooksList'
 import { requestBooks } from '../actionCreators/books'
+import Navigation from '../components/navigation/Navigation'
 
 class Books extends Component {
   componentWillMount() {
@@ -11,6 +12,7 @@ class Books extends Component {
   render() {
     return (
       <div className="Page--Books">
+        <Navigation />
         <h1>Books page</h1>
         <BooksList books={this.props.books} />
       </div>
