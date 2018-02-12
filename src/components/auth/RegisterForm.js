@@ -49,11 +49,16 @@ class RegisterForm extends Component {
           placeholder="Password"
         />
 
-        <button onClick={() => this.props.onSubmit({
-          username: this.state.username,
-          email: this.state.email,
-          password: this.state.password
-        }, this.clearRegisterForm.bind(this))} type="button">Register</button>
+        <button
+          onClick={() => this.props.onSubmit({
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+          }, this.clearRegisterForm.bind(this))}
+          type="button"
+        >
+          Register
+        </button>
 
         <div>
           <Link to="/login">login</Link>

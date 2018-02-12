@@ -20,12 +20,28 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="Component--LoginForm">
-        <input type="text" placeholder="Username" onChange={e => this.onInputChange(e.target.value, 'username')} />
-        <input type="password" placeholder="Password" onChange={e => this.onInputChange(e.target.value, 'password')} />
-        <button type="button" onClick={() => this.props.onSubmit({
-          username: this.state.username,
-          password: this.state.password
-        })}>Login</button>
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={e => this.onInputChange(e.target.value, 'username')}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={e => this.onInputChange(e.target.value, 'password')}
+        />
+
+        <button
+          type="button"
+          onClick={() => this.props.onSubmit({
+            username: this.state.username,
+            password: this.state.password
+          })}
+        >
+          Login
+        </button>
+
         <div>
           <p><Link to="/register">register</Link></p>
         </div>
