@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch'
 import {
-  API_KEY,
+  APP_KEY,
   masterAuthHash,
   username,
   password
@@ -10,7 +10,7 @@ const BASE_URL = 'https://baas.kinvey.com'
 
 /* general */
 const handshake = function () {
-  return fetch(`${BASE_URL}/appdata/${API_KEY}`, {
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}`, {
     headers: {
       'authorization': `Basic ${masterAuthHash()}`
     }
@@ -22,7 +22,7 @@ const handshake = function () {
 const getAllBooks = function () {
   const authHash = btoa(`${username}:${password}`)
 
-  return fetch(`${BASE_URL}/appdata/${API_KEY}/books`, {
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/books`, {
     headers: {
       'authorization': `Basic ${authHash}`,
       'content-type': 'application/json'
@@ -33,7 +33,7 @@ const getAllBooks = function () {
 
 /* users */
 function register(username, email, password) {
-  return fetch(`${BASE_URL}/user/${API_KEY}`, {
+  return fetch(`${BASE_URL}/user/${APP_KEY}`, {
     method: 'POST',
     headers: {
       'authorization': `Basic ${masterAuthHash()}`,
@@ -47,8 +47,18 @@ function register(username, email, password) {
   })
 }
 
-function login() {
-
+function login(username, password) {
+  return fetch(`${BASE_URL}/user/${APP_KEY}/login`, {
+    method: 'POST',
+    headers: {
+      'authorization': `Basic ${masterAuthHash()}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  })
 }
 
 function logout() {
