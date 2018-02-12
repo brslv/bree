@@ -8,13 +8,19 @@ const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }
 }
 
-const register = ({ username, email, password }) => {
+const register = ({
+    username,
+    email,
+    password
+  }, clearRegisterForm
+) => {
   return dispatch => {
     dispatch({ type: REGISTER_START })
 
     return registerUser(username, email, password)
       .then(response => {
         dispatch(registerReady(response))
+        clearRegisterForm()
       })
   }
 }

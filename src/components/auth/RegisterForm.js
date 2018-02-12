@@ -16,6 +16,14 @@ class RegisterForm extends Component {
     this.setState({ [name]: value })
   }
 
+  clearRegisterForm() {
+    this.setState({
+      username: '',
+      email: '',
+      password: ''
+    })
+  }
+
   render() {
     return (
       <div className="Component--RegisterForm">
@@ -44,7 +52,7 @@ class RegisterForm extends Component {
           username: this.state.username,
           email: this.state.email,
           password: this.state.password
-        })} type="button">Register</button>
+        }, this.clearRegisterForm.bind(this))} type="button">Register</button>
       </div>
     )
   }

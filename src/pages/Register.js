@@ -5,8 +5,8 @@ import { register } from '../actionCreators/user'
 import { connect } from 'react-redux'
 
 class Register extends Component {
-  onSubmit(data) {
-    this.props.register(data)
+  onSubmit(data, clearRegisterForm) {
+    this.props.register(data, clearRegisterForm)
   }
 
   render() {
@@ -21,8 +21,8 @@ class Register extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: data => {
-      dispatch(register(data))
+    register: (data, clearRegisterForm) => {
+      dispatch(register(data, clearRegisterForm))
     }
   }
 }
