@@ -33,7 +33,6 @@ const getAllBooks = function () {
 
 /* users */
 function register(username, email, password) {
-  console.warn(username, email, password)
   return fetch(`${BASE_URL}/user/${API_KEY}`, {
     method: 'POST',
     headers: {
