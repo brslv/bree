@@ -4,10 +4,12 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import { connect } from 'react-redux'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Books from './pages/Books'
+import Loader from './components/Loader'
 import './App.css'
 
 class App extends Component {
@@ -24,9 +26,19 @@ class App extends Component {
             </React.Fragment>
           </Router>
         </Provider>
+        {this.props.isLoading ? <Loader /> : ''}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isLoading: state.isLoading
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);

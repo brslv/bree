@@ -4,6 +4,7 @@ import {
   LOGIN_START,
   LOGIN_READY
 } from '../actions/user'
+import { startLoading, stopLoading } from '../actionCreators/isLoading'
 import { register as registerUser } from '../utils/db'
 import { login as loginUser } from '../utils/db'
 
@@ -19,11 +20,13 @@ const register = ({
 ) => {
   return dispatch => {
     dispatch({ type: REGISTER_START })
+    dispatch(startLoading())
 
     return registerUser(username, email, password)
       .then(response => {
         dispatch(registerReady(response))
         clearRegisterForm()
+        dispatch(stopLoading())
       })
   }
 }
@@ -38,11 +41,13 @@ const login = ({
 }) => {
   return dispatch => {
     dispatch({ type: LOGIN_START })
+    dispatch(startLoading())
 
     return loginUser(username, password)
       .then(response => {
         console.warn(response)
         dispatch(loginReady(response))
+        dispatch(stopLoading())
       })
   }
 }
