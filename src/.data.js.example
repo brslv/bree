@@ -1,0 +1,13 @@
+const APP_KEY = 'YOUR_APP_KEY'
+const APP_SECRET = 'YOUR_APP_SECRET'
+const masterAuthHash = () => btoa(`${APP_KEY}:${APP_SECRET}`)
+const username = 'USERNAME'
+const password = 'PASSWORD'
+
+export {
+  APP_KEY,
+  APP_SECRET,
+  masterAuthHash,
+  username,
+  password
+}
