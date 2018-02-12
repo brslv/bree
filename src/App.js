@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom'
 import Home from './pages/Home'
+import Register from './pages/Register'
 import './App.css'
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
         <Provider store={this.props.store}>
           <Router>
             <React.Fragment>
-              <Route exact path='/' component={Home} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/register" component={Register} />
             </React.Fragment>
           </Router>
         </Provider>

@@ -9,7 +9,7 @@ import Login from './Login'
  */
 class Home extends Component {
   isLogged() {
-    return true
+    return false
   }
 
   render() {

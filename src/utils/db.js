@@ -24,10 +24,36 @@ const getAllBooks = function () {
 
   return fetch(`${BASE_URL}/appdata/${API_KEY}/books`, {
     headers: {
-      'authorization': `Basic ${authHash}`
+      'authorization': `Basic ${authHash}`,
+      'content-type': 'application/json'
     }
   })
     .then(r => r.json())
+}
+
+/* users */
+function register(username, email, password) {
+  console.warn(username, email, password)
+  return fetch(`${BASE_URL}/user/${API_KEY}`, {
+    method: 'POST',
+    headers: {
+      'authorization': `Basic ${masterAuthHash()}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      email,
+      password
+    })
+  })
+}
+
+function login() {
+
+}
+
+function logout() {
+
 }
 
 export {
@@ -35,5 +61,10 @@ export {
   handshake,
 
   /* books */
-  getAllBooks
+  getAllBooks,
+
+  /* users */
+  register,
+  login,
+  logout
 }
