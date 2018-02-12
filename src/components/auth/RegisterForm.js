@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './RegisterForm.css'
+import { Link } from 'react-router-dom'
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -53,6 +54,10 @@ class RegisterForm extends Component {
           email: this.state.email,
           password: this.state.password
         }, this.clearRegisterForm.bind(this))} type="button">Register</button>
+
+        <div>
+          <Link to="/login">login</Link>
+        </div>
       </div>
     )
   }
