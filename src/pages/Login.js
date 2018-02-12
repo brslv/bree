@@ -3,6 +3,7 @@ import './Login.css'
 import LoginForm from '../components/auth/LoginForm'
 import { login } from '../actionCreators/user'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 class Login extends Component {
   onSubmit({ username, password }) {
@@ -19,13 +20,13 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   login: ({ username, password }) => {
-    dispatch(login({ username, password }))
+    dispatch(login({ history: ownProps.history, username, password }))
   }
 })
 
-export default connect(
+export default withRouter(connect(
   null,
   mapDispatchToProps
-)(Login);
+)(Login));

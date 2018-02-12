@@ -36,6 +36,7 @@ const loginReady = loginData => {
 }
 
 const login = ({
+  history,
   username,
   password
 }) => {
@@ -45,9 +46,12 @@ const login = ({
 
     return loginUser(username, password)
       .then(response => {
-        console.warn(response)
         dispatch(loginReady(response))
         dispatch(stopLoading())
+
+        if (response.status === 200) {
+          history.push('/books')
+        }
       })
   }
 }
