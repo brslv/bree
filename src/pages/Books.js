@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import BooksList from '../components/books/BooksList'
 import { requestBooks } from '../actionCreators/books'
 import Navigation from '../components/navigation/Navigation'
@@ -37,6 +38,6 @@ const mapDispatchToProps = dispatch => {
 const connected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Books);
+)(Books)
 
-export default connected
+export default withRouter(connected)

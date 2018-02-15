@@ -26,7 +26,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 })
 
-export default withRouter(connect(
+const connected = connect(
   null,
   mapDispatchToProps
-)(Login));
+)(Login)
+
+export default withRouter(connected)
