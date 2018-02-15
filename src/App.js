@@ -4,8 +4,8 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute'
-import GuestRoute from './components/GuestRoute'
+import PrivateRoute from './components/routing/PrivateRoute'
+import GuestRoute from './components/routing/GuestRoute'
 import { connect } from 'react-redux'
 import Home from './pages/Home'
 import Register from './pages/Register'

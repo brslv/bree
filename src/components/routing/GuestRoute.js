@@ -4,20 +4,20 @@ import {
   Redirect,
   withRouter
 } from 'react-router-dom'
-import { isLogged } from '../utils/user'
+import { isLogged } from '../../utils/user'
 
-const PrivateRoute = ({ component: Component, ...props }) => {
+const GuestRoute = ({ component: Component, ...props }) => {
   return <Route {...props} render={() => {
-    if (isLogged()) {
+    if (!isLogged()) {
       return (
         <Component {...props} />
       )
     } else {
       return (
-        <Redirect to="/login" />
+        <Redirect to="/books" />
       )
     }
   }} />
 }
 
-export default withRouter(PrivateRoute)
+export default withRouter(GuestRoute)
