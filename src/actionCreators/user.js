@@ -16,7 +16,9 @@ const register = ({
     username,
     email,
     password
-  }, clearRegisterForm
+  },
+  clearRegisterForm,
+  history
 ) => {
   return dispatch => {
     dispatch({ type: REGISTER_START })
@@ -27,6 +29,10 @@ const register = ({
         dispatch(registerReady(response))
         clearRegisterForm()
         dispatch(stopLoading())
+
+        if (response.status === 200) {
+          history.push('/login')
+        }
       })
   }
 }

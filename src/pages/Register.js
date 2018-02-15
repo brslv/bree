@@ -22,10 +22,10 @@ class Register extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     register: (data, clearRegisterForm) => {
-      dispatch(register(data, clearRegisterForm))
+      dispatch(register(data, clearRegisterForm, ownProps.history))
     }
   }
 }
