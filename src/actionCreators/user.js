@@ -7,6 +7,10 @@ import {
 import { startLoading, stopLoading } from '../actionCreators/isLoading'
 import { register as registerUser } from '../utils/db'
 import { login as loginUser } from '../utils/db'
+import {
+  addNotification,
+  showNotifications
+} from '../actionCreators/notifications'
 
 const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }
@@ -30,7 +34,10 @@ const register = ({
         clearRegisterForm()
         dispatch(stopLoading())
 
-        if (response.status === 200) {
+        if (response.status === 201) {
+          dispatch(addNotification({ content: 'Register success!' }))
+          dispatch(showNotifications())
+
           history.push('/login')
         }
       })
@@ -56,6 +63,9 @@ const login = ({
         dispatch(stopLoading())
 
         if (response.status === 200) {
+          dispatch(addNotification({ content: 'Success!' }))
+          dispatch(showNotifications())
+
           history.push('/books')
         }
       })

@@ -12,6 +12,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Books from './pages/Books'
 import Loader from './components/Loader'
+import NotificationsDrawer from './components/NotificationsDrawer'
 import './App.css'
 
 class App extends Component {
@@ -19,14 +20,17 @@ class App extends Component {
     return (
       <div className="app">
         <Provider store={this.props.store}>
-          <Router>
-            <React.Fragment>
-              <Route exact path="/" component={Home} />
-              <GuestRoute path="/login" component={Login} />
-              <GuestRoute path="/register" component={Register} />
-              <PrivateRoute path="/books" component={Books} />
-            </React.Fragment>
-          </Router>
+          <React.Fragment>
+            <Router>
+              <React.Fragment>
+                <Route exact path="/" component={Home} />
+                <GuestRoute path="/login" component={Login} />
+                <GuestRoute path="/register" component={Register} />
+                <PrivateRoute path="/books" component={Books} />
+              </React.Fragment>
+            </Router>
+            {this.props.notifications.listVisible ?  <NotificationsDrawer notifications={this.props.notifications} /> : ''}
+          </React.Fragment>
         </Provider>
         {this.props.isLoading ? <Loader /> : ''}
       </div>
@@ -36,7 +40,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    notifications: state.notifications
   }
 }
 
