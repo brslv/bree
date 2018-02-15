@@ -44,6 +44,7 @@ class LoginForm extends Component {
 
         <div>
           <p><Link to="/register">register</Link></p>
+          <p><Link to="/books">books</Link></p>
         </div>
       </div>
     )

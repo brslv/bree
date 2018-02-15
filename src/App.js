@@ -4,6 +4,8 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import PrivateRoute from './components/PrivateRoute'
+import GuestRoute from './components/GuestRoute'
 import { connect } from 'react-redux'
 import Home from './pages/Home'
 import Register from './pages/Register'
@@ -20,9 +22,9 @@ class App extends Component {
           <Router>
             <React.Fragment>
               <Route exact path="/" component={Home} />
-              <Route exact path="/books" component={Books} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
+              <GuestRoute path="/login" component={Login} />
+              <GuestRoute path="/register" component={Register} />
+              <PrivateRoute path="/books" component={Books} />
             </React.Fragment>
           </Router>
         </Provider>

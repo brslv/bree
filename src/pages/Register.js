@@ -3,7 +3,9 @@ import './Register.css'
 import RegisterForm from '../components/auth/RegisterForm'
 import { register } from '../actionCreators/user'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import {
+  withRouter
+} from 'react-router-dom'
 
 class Register extends Component {
   onSubmit(data, clearRegisterForm) {
