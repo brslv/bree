@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import './NotificationsDrawer.css'
+import Notification from './Notification'
 
 class NotificationsDrawer extends Component {
   render() {
     return (
       <div className="Component--NotificationsDrawer">
-        {this.props.notifications.map((notification, index) => {
-          return (
-            <div key={index}>
-              <strong>{notification.content}</strong>
-            </div>
-          )
-        })}
+        {this.props.notifications.map((notification, index) => (
+            <Notification key={index} content={notification.content} />
+        ))}
       </div>
     )
   }

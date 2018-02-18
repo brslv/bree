@@ -12,7 +12,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Books from './pages/Books'
 import Loader from './components/Loader'
-import NotificationsDrawer from './components/NotificationsDrawer'
+import NotificationsDrawer from './components/notifications/NotificationsDrawer'
 import './App.css'
 
 class App extends Component {
