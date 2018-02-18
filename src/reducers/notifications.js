@@ -5,7 +5,6 @@ import {
 } from '../actions/notifications'
 
 const notificationsReducer = (state = [], action) => {
-  console.log(action)
   switch (action.type) {
     case NOTIFICATIONS_ADD: {
       return [action.payload, ...state]

@@ -30,13 +30,17 @@ const register = ({
     return registerUser(username, email, password)
       .then(response => {
         dispatch(registerReady(response))
-        clearRegisterForm()
         dispatch(stopLoading())
 
         if (response.status === 201) {
-          dispatch(addNotification({ content: 'Register success!' }))
+          clearRegisterForm()
+          dispatch(addNotification({ content: 'Successful registration 🎉' }))
 
           history.push('/login')
+        }
+
+        if (response.status === 409) {
+          dispatch(addNotification({ content: 'User already exists' }))
         }
       })
   }
@@ -64,6 +68,10 @@ const login = ({
           dispatch(addNotification({ content: 'Success!' }))
 
           history.push('/books')
+        }
+
+        if (response.status === 401) {
+          dispatch(addNotification({ content: 'Invalid credentials. Please, try again.'}))
         }
       })
   }
