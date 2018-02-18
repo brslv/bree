@@ -1,46 +1,28 @@
 import {
-  NOTIFICATIONS_SHOW,
-  NOTIFICATIONS_HIDE,
   NOTIFICATIONS_ADD,
   NOTIFICATIONS_REMOVE,
   NOTIFICATIONS_CLEAR
 } from '../actions/notifications'
 
-const defaultState = {
-  listVisible: false,
-  list: []
-}
-
-const notificationsReducer = (state = defaultState, action) => {
+const notificationsReducer = (state = [], action) => {
+  console.log(action)
   switch (action.type) {
-    case NOTIFICATIONS_SHOW: {
-      return Object.assign({}, state, { listVisible: true })
-    }
-    case NOTIFICATIONS_HIDE: {
-      return Object.assign({}, state, { listVisible: false })
-    }
     case NOTIFICATIONS_ADD: {
-      return Object.assign({}, state, { list: [action.payload, ...state.list] })
+      return [action.payload, ...state]
     }
     case NOTIFICATIONS_REMOVE: {
       let index = action.payload
       if (action.payload === 'last') {
-        index = state.list.length - 1
+        index = state.length - 1
       }
 
-      const newState = Object.assign({}, state, { list: [
-        ...state.list.slice(0, index),
-        ...state.list.slice(index + 1)
-      ] })
-
-      if (!newState.list.length) {
-        newState.listVisible = false
-      }
-
-      return newState
+      return [
+        ...state.slice(0, index),
+        ...state.slice(index + 1)
+      ]
     }
     case NOTIFICATIONS_CLEAR: {
-      return Object.assign({}, state, { list: [] })
+      return []
     }
     default: return state
   }

@@ -29,7 +29,7 @@ class App extends Component {
                 <PrivateRoute path="/books" component={Books} />
               </React.Fragment>
             </Router>
-            {this.props.notifications.listVisible ?  <NotificationsDrawer notifications={this.props.notifications} /> : ''}
+            <NotificationsDrawer notifications={this.props.notifications} />
           </React.Fragment>
         </Provider>
         {this.props.isLoading ? <Loader /> : ''}

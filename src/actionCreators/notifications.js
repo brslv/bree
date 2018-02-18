@@ -1,18 +1,8 @@
 import {
-  NOTIFICATIONS_SHOW,
-  NOTIFICATIONS_HIDE,
   NOTIFICATIONS_ADD,
   NOTIFICATIONS_REMOVE,
   NOTIFICATIONS_CLEAR
 } from '../actions/notifications'
-
-const showNotifications = () => {
-  return { type: NOTIFICATIONS_SHOW }
-}
-
-const hideNotifications = () => {
-  return { type: NOTIFICATIONS_HIDE }
-}
 
 const addNotification = (notification) => {
   return dispatch => {
@@ -33,8 +23,6 @@ const clearNotifications = () => {
 }
 
 export {
-  showNotifications,
-  hideNotifications,
   addNotification,
   removeNotification,
   clearNotifications
