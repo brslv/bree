@@ -2,7 +2,8 @@ import {
   REGISTER_START,
   REGISTER_READY,
   LOGIN_START,
-  LOGIN_READY
+  LOGIN_READY,
+  LOGIN_USER_DATA_RECEIVED
 } from '../actions/user'
 
 export default (state = null, action) => {
@@ -10,7 +11,8 @@ export default (state = null, action) => {
     case REGISTER_START: return state
     case REGISTER_READY: return action.payload
     case LOGIN_START: return state
-    case LOGIN_READY: return action.payload
+    case LOGIN_READY: return state
+    case LOGIN_USER_DATA_RECEIVED: return action.payload
     default: return state
   }
 }

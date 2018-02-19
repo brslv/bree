@@ -2,7 +2,8 @@ import {
   REGISTER_START,
   REGISTER_READY,
   LOGIN_START,
-  LOGIN_READY
+  LOGIN_READY,
+  LOGIN_USER_DATA_RECEIVED
 } from '../actions/user'
 import { startLoading, stopLoading } from '../actionCreators/isLoading'
 import { register as registerUser } from '../utils/db'
@@ -50,6 +51,10 @@ const loginReady = loginData => {
   return { type: LOGIN_READY, payload: loginData }
 }
 
+const loginUserDataReceived = userData => {
+  return { type: LOGIN_USER_DATA_RECEIVED, payload: userData }
+}
+
 const login = ({
   history,
   username,
@@ -67,11 +72,14 @@ const login = ({
         if (response.status === 200) {
           dispatch(addNotification({ content: 'Success!' }))
 
-          history.push('/books')
+          response.json().then(userData => {
+            dispatch(loginUserDataReceived(userData))
+            history.push('/books')
+          })
         }
 
         if (response.status === 401) {
-          dispatch(addNotification({ content: 'Invalid credentials. Please, try again.'}))
+          dispatch(addNotification({ content: 'Invalid credentials. Please, try again.' }))
         }
       })
   }
