@@ -61,8 +61,13 @@ function login(username, password) {
   })
 }
 
-function logout() {
-
+function logout(authToken) {
+  return fetch(`${BASE_URL}/user/${APP_KEY}/_logout`, {
+    method: 'POST',
+    headers: {
+      'authorization': `Kinvey ${authToken}`
+    }
+  })
 }
 
 export {

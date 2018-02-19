@@ -3,11 +3,16 @@ import {
   REGISTER_READY,
   LOGIN_START,
   LOGIN_READY,
-  LOGIN_USER_DATA_RECEIVED
+  LOGIN_USER_DATA_RECEIVED,
+  LOGOUT_START,
+  LOGOUT_END
 } from '../actions/user'
 import { startLoading, stopLoading } from '../actionCreators/isLoading'
-import { register as registerUser } from '../utils/db'
-import { login as loginUser } from '../utils/db'
+import {
+  login as loginUser,
+  register as registerUser,
+  logout as logoutUser
+} from '../utils/db'
 import { addNotification } from '../actionCreators/notifications'
 
 const registerReady = registerData => {
@@ -28,10 +33,10 @@ const register = ({
 
     return registerUser(username, email, password)
       .then(response => {
-        dispatch(registerReady(response))
         dispatch(stopLoading())
 
         if (response.status === 201) {
+          dispatch(registerReady(response))
           clearRegisterForm()
           dispatch(addNotification({ content: 'Successful registration 🎉' }))
 
@@ -94,7 +99,26 @@ const login = ({
   }
 }
 
+const logout = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: LOGOUT_START })
+    dispatch(startLoading())
+
+    return logoutUser(getState().user.authToken)
+      .then(response => {
+        if (response.status === 204) {
+          // user logged out
+          localStorage.removeItem('__userData')
+
+          dispatch({ type: LOGOUT_END })
+          dispatch(stopLoading())
+        }
+      })
+  }
+}
+
 export {
   register,
-  login
+  login,
+  logout
 }
