@@ -1,5 +1,5 @@
-const LOADING_START = 'loading_start'
-const LOADING_END = 'loading_end'
+const LOADING_START = 'LOADING_START'
+const LOADING_END = 'LOADING_END'
 
 export {
   LOADING_START,

@@ -1,5 +1,5 @@
-const REQUEST_BOOKS = 'request_books'
-const RECEIVE_BOOKS = 'receive_books'
+const REQUEST_BOOKS = 'REQUEST_BOOKS'
+const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 
 export {
   REQUEST_BOOKS,
