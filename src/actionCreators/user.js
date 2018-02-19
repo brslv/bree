@@ -8,9 +8,7 @@ import {
 import { startLoading, stopLoading } from '../actionCreators/isLoading'
 import { register as registerUser } from '../utils/db'
 import { login as loginUser } from '../utils/db'
-import {
-  addNotification,
-} from '../actionCreators/notifications'
+import { addNotification } from '../actionCreators/notifications'
 
 const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }
@@ -73,7 +71,18 @@ const login = ({
           dispatch(addNotification({ content: 'Success!' }))
 
           response.json().then(userData => {
-            dispatch(loginUserDataReceived(userData))
+            const essentialUserData = {
+              username: userData.username,
+              email: userData.email,
+              id: userData._id,
+              authToken: userData._kmd.authtoken
+            }
+
+            dispatch(loginUserDataReceived(essentialUserData))
+
+            // save user data to localStorage
+            localStorage.setItem('__userData', JSON.stringify(essentialUserData))
+
             history.push('/books')
           })
         }
