@@ -10,4 +10,12 @@ const isLogged = () => {
   return !!userData.authToken
 }
 
-export { isLogged }
+const getLoggedUser = () => {
+  if (!isLogged()) {
+    return null
+  }
+
+  return JSON.parse(localStorage.getItem('__userData'))
+}
+
+export { isLogged, getLoggedUser }

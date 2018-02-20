@@ -7,14 +7,16 @@ import {
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
 import { connect } from 'react-redux'
-import Home from './pages/Home'
-import Register from './pages/Register'
-import Login from './pages/Login'
-import Books from './pages/Books'
 import Loader from './components/Loader'
 import NotificationsDrawer from './components/notifications/NotificationsDrawer'
 import { logout } from './actionCreators/user'
 import './App.css'
+
+import HomePage from './pages/Home'
+import RegisterPage from './pages/Register'
+import LoginPage from './pages/Login'
+import BooksListPage from './pages/books/List'
+import BooksAddPage from './pages/books/Add'
 
 class App extends Component {
   render() {
@@ -25,10 +27,11 @@ class App extends Component {
           <React.Fragment>
             <Router>
               <React.Fragment>
-                <Route exact path="/" component={Home} />
-                <GuestRoute path="/login" component={Login} />
-                <GuestRoute path="/register" component={Register} />
-                <PrivateRoute path="/books" component={Books} />
+                <Route exact path="/" component={HomePage} />
+                <GuestRoute path="/login" component={LoginPage} />
+                <GuestRoute path="/register" component={RegisterPage} />
+                <PrivateRoute exact path="/books" component={BooksListPage} />
+                <PrivateRoute exact path="/books/add" component={BooksAddPage} />
               </React.Fragment>
             </Router>
             <NotificationsDrawer notifications={this.props.notifications} />

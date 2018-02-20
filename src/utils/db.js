@@ -2,9 +2,8 @@ import fetch from 'cross-fetch'
 import {
   APP_KEY,
   masterAuthHash,
-  username,
-  password
 } from '../.data'
+import { getLoggedUser } from './user'
 
 const BASE_URL = 'https://baas.kinvey.com'
 
@@ -20,11 +19,11 @@ const handshake = function () {
 
 /* books */
 const getAllBooks = function () {
-  const authHash = btoa(`${username}:${password}`)
+  const authHash = getLoggedUser().authToken
 
   return fetch(`${BASE_URL}/appdata/${APP_KEY}/books`, {
     headers: {
-      'authorization': `Basic ${authHash}`,
+      'authorization': `Kinvey ${authHash}`,
       'content-type': 'application/json'
     }
   })
