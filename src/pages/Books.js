@@ -6,7 +6,7 @@ import { requestBooks } from '../actionCreators/books'
 import Navigation from '../components/navigation/Navigation'
 
 class Books extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.requestBooks()
   }
 
