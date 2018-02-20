@@ -6,10 +6,12 @@ import {
 } from 'react-router-dom'
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
+import Navigation from './components/navigation/Navigation'
 import { connect } from 'react-redux'
 import Loader from './components/Loader'
 import NotificationsDrawer from './components/notifications/NotificationsDrawer'
 import { logout } from './actionCreators/user'
+import { isLogged } from './utils/user'
 import './App.css'
 
 import HomePage from './pages/Home'
@@ -22,9 +24,10 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        {this.props.user ? <button onClick={this.props.logout}>Logout</button> : ''}
         <Provider store={this.props.store}>
           <React.Fragment>
+            {isLogged() ? <button onClick={this.props.logout}>Logout</button> : ''}
+            {isLogged() ? <Navigation /> : ''}
             <Router>
               <React.Fragment>
                 <Route exact path="/" component={HomePage} />
@@ -46,8 +49,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     isLoading: state.isLoading,
-    notifications: state.notifications,
-    user: state.user
+    notifications: state.notifications
   }
 }
 
