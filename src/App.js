@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { Provider } from 'react-redux'
+import {
+  Provider,
+  connect
+} from 'react-redux'
 import {
   BrowserRouter as Router,
   Route
@@ -7,11 +10,9 @@ import {
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
 import Navigation from './components/navigation/Navigation'
-import { connect } from 'react-redux'
 import Loader from './components/Loader'
 import NotificationsDrawer from './components/notifications/NotificationsDrawer'
 import { logout } from './actionCreators/user'
-import { isLogged } from './utils/user'
 import './App.css'
 
 import HomePage from './pages/Home'
@@ -25,22 +26,23 @@ class App extends Component {
     return (
       <div className="app">
         <Provider store={this.props.store}>
-          <React.Fragment>
-            {isLogged() ? <button onClick={this.props.logout}>Logout</button> : ''}
-            {isLogged() ? <Navigation /> : ''}
-            <Router>
-              <React.Fragment>
-                <Route exact path="/" component={HomePage} />
-                <GuestRoute path="/login" component={LoginPage} />
-                <GuestRoute path="/register" component={RegisterPage} />
-                <PrivateRoute exact path="/books" component={BooksListPage} />
-                <PrivateRoute exact path="/books/add" component={BooksAddPage} />
-              </React.Fragment>
-            </Router>
-            <NotificationsDrawer notifications={this.props.notifications} />
-          </React.Fragment>
+          <Router>
+            <React.Fragment>
+
+              {this.props.user ? <Navigation onLogout={this.props.logout} /> : ''}
+
+              <Route exact path="/" user={this.props.user} component={HomePage} />
+              <GuestRoute path="/login" user={this.props.user} component={LoginPage} />
+              <GuestRoute path="/register" user={this.props.user} component={RegisterPage} />
+              <PrivateRoute exact path="/books" user={this.props.user} component={BooksListPage} />
+              <PrivateRoute exact path="/books/add" user={this.props.user} component={BooksAddPage} />
+
+              <NotificationsDrawer notifications={this.props.notifications} />
+              {this.props.isLoading ? <Loader /> : ''}
+
+            </React.Fragment>
+          </Router>
         </Provider>
-        {this.props.isLoading ? <Loader /> : ''}
       </div>
     );
   }
@@ -49,7 +51,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     isLoading: state.isLoading,
-    notifications: state.notifications
+    notifications: state.notifications,
+    user: state.user
   }
 }
 
@@ -64,4 +67,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App)

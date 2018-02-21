@@ -8,10 +8,11 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import reducer from './reducers/root'
-import { isLogged } from './utils/user'
 
 const initialState = {
-  user: isLogged() ? JSON.parse(localStorage.getItem('__userData')) : null
+  user: localStorage.getItem('__userData')
+    ? JSON.parse(localStorage.getItem('__userData'))
+    : null
 }
 
 const store = createStore(

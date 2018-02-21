@@ -3,7 +3,6 @@ import {
   APP_KEY,
   masterAuthHash,
 } from '../.data'
-import { getLoggedUser } from './user'
 
 const BASE_URL = 'https://baas.kinvey.com'
 
@@ -18,8 +17,8 @@ const handshake = function () {
 }
 
 /* books */
-const getAllBooks = function () {
-  const authHash = getLoggedUser().authToken
+const getAllBooks = function (user) {
+  const authHash = user.authToken
 
   return fetch(`${BASE_URL}/appdata/${APP_KEY}/books`, {
     headers: {

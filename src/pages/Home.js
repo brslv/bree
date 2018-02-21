@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { isLogged } from '../utils/user'
 
 /**
  * This component acts as a controller, deciding which
@@ -8,7 +7,7 @@ import { isLogged } from '../utils/user'
  */
 class Home extends Component {
   render() {
-    if (isLogged()) {
+    if (this.props.user) {
       return (
         <Redirect to="/books" />
       )

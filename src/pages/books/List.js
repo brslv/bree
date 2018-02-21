@@ -25,10 +25,10 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     requestBooks: () => {
-      dispatch(requestBooks())
+      dispatch(requestBooks(ownProps.user))
     }
   }
 }

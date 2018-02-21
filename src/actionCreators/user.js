@@ -85,7 +85,6 @@ const login = ({
 
             dispatch(loginUserDataReceived(essentialUserData))
 
-            // save user data to localStorage
             localStorage.setItem('__userData', JSON.stringify(essentialUserData))
 
             history.push('/books')

@@ -4,11 +4,11 @@ import {
 } from '../actions/books'
 import { getAllBooks } from '../utils/db'
 
-const requestBooks = () => {
+const requestBooks = (user) => {
   return async (dispatch) => {
     dispatch({ type: REQUEST_BOOKS })
 
-    const books = await getAllBooks()
+    const books = await getAllBooks(user)
 
     dispatch({
       type: RECEIVE_BOOKS,
