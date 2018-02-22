@@ -14,6 +14,7 @@ import {
   logout as logoutUser
 } from '../utils/db'
 import { addNotification } from '../actionCreators/notifications'
+import { userDataStoreKey } from '../.data'
 
 const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }
@@ -85,7 +86,7 @@ const login = ({
 
             dispatch(loginUserDataReceived(essentialUserData))
 
-            localStorage.setItem('__userData', JSON.stringify(essentialUserData))
+            localStorage.setItem(userDataStoreKey, JSON.stringify(essentialUserData))
 
             history.push('/books')
           })
@@ -107,7 +108,7 @@ const logout = () => {
       .then(response => {
         if (response.status === 204) {
           // user logged out
-          localStorage.removeItem('__userData')
+          localStorage.removeItem(userDataStoreKey)
 
           dispatch({ type: LOGOUT_END })
           dispatch(stopLoading())
