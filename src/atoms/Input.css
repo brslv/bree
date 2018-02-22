@@ -1,0 +1,11 @@
+.Atom--Input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #efe1e0;
+}
+
+.Atom--Input:focus {
+  outline: none;
+  border: 1px solid #A97E86;
+}

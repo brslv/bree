@@ -13,8 +13,10 @@ class Login extends Component {
   render() {
     return (
       <div className="Page--Login">
-        <h1>Login page</h1>
-        <LoginForm onSubmit={this.onSubmit.bind(this)} />
+        <div className="wrapper">
+          <h1>Login</h1>
+          <LoginForm onSubmit={this.onSubmit.bind(this)} />
+        </div>
       </div>
     );
   }

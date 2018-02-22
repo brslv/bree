@@ -1,0 +1,31 @@
+.Atom--Button {
+  border: 1px solid #efe1e0;
+  padding: 1rem;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  font-weight: 600;
+  background: #efe1e0;
+  color: #a97a86;
+}
+
+.Atom--Button.stroke-only {
+  color: #a97a86;
+  border-color: #a97a86;
+  background: transparent !important;
+}
+
+.Atom--Button.stroke-only:focus,
+.Atom--Button.stroke-only:hover {
+  color: #222a40 !important;
+  border-color: #222a40;
+}
+
+.Atom--Button:hover,
+.Atom--Button:focus {
+  outline: none;
+  border: 1px solid #a97e86;
+  background: #a97a86;
+  color: #fff;
+}

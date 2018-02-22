@@ -7,19 +7,18 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import './App.css'
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
 import Navigation from './components/navigation/Navigation'
 import Loader from './components/Loader'
 import NotificationsDrawer from './components/notifications/NotificationsDrawer'
-import { logout } from './actionCreators/user'
-import './App.css'
-
 import HomePage from './pages/Home'
 import RegisterPage from './pages/Register'
 import LoginPage from './pages/Login'
 import BooksListPage from './pages/books/List'
 import BooksAddPage from './pages/books/Add'
+import { logout } from './actionCreators/user'
 
 class App extends Component {
   render() {
