@@ -2,18 +2,20 @@ import React from 'react'
 import './Input.css'
 
 const Input = (props) => {
-  const classNames = props.classNames
-    ? [
-      'Atom--Input',
-      ...props.className
-    ]
-    : ['Atom--Input']
+  let classNames = `Atom--Input`
 
-  if (props.rounded) {
-    classNames.push('rounded')
+  if (props.className) {
+     classNames += ` ${props.className}`
   }
 
-  return <input {...props} className={classNames.join(' ')} />
+  if (props.rounded) {
+    classNames += ' rounded'
+  }
+
+  return <input
+    {...props}
+    className={classNames}
+  />
 }
 
 export default Input

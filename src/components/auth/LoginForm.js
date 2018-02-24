@@ -3,6 +3,7 @@ import './LoginForm.css'
 import { Link } from 'react-router-dom'
 import Input from '../../atoms/Input'
 import Button from '../../atoms/Button'
+import Box from '../../atoms/Box'
 
 class LoginForm extends Component {
   constructor(props) {
@@ -21,18 +22,18 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div className="Component--LoginForm">
+      <Box className="Component--LoginForm">
         <Input
           type="text"
           placeholder="Username"
           onChange={e => this.onInputChange(e.target.value, 'username')}
-        />
+          />
 
         <Input
           type="password"
           placeholder="Password"
           onChange={e => this.onInputChange(e.target.value, 'password')}
-        />
+          />
 
         <div className="Buttons-container">
           <Button
@@ -41,12 +42,12 @@ class LoginForm extends Component {
               username: this.state.username,
               password: this.state.password
             })}
-          >
+            >
             Login
           </Button>
           <p><Link to="/register">register</Link></p>
         </div>
-      </div>
+      </Box>
     )
   }
 }
