@@ -1,7 +1,25 @@
-.Page--Register {
-  height: 100%;
+.Component--RegisterForm {
+  min-width: 250px;
+  width: 300px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+.Component--RegisterForm .Atom--Input {
+  margin-bottom: 1rem;
+}
+
+.Component--RegisterForm .buttons-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.Component--RegisterForm .buttons-container .Atom--Button {
+  align-self: flex-start;
+}
+
+.Component--RegisterForm .buttons-container .Atom--Button {
+  align-self: flex-end;
 }

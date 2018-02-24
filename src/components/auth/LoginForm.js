@@ -35,7 +35,7 @@ class LoginForm extends Component {
           onChange={e => this.onInputChange(e.target.value, 'password')}
           />
 
-        <div className="Buttons-container">
+        <div className="buttons-container">
           <Button
             type="button"
             onClick={() => this.props.onSubmit({

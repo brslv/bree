@@ -15,8 +15,10 @@ class Register extends Component {
   render() {
     return (
       <div className="Page--Register">
-        <h1>Register page</h1>
-        <RegisterForm onSubmit={this.onSubmit.bind(this)} />
+        <div className="wrapper">
+          <h1>Register</h1>
+          <RegisterForm onSubmit={this.onSubmit.bind(this)} />
+        </div>
       </div>
     );
   }

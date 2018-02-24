@@ -10,16 +10,16 @@
   margin-bottom: 1rem;
 }
 
-.Component--LoginForm .Buttons-container {
+.Component--LoginForm .buttons-container {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
 }
 
-.Component--LoginForm .Buttons-container .Atom--Button {
+.Component--LoginForm .buttons-container .Atom--Button {
   align-self: flex-start;
 }
 
-.Component--LoginForm .Buttons-container .Atom--Button {
+.Component--LoginForm .buttons-container .Atom--Button {
   align-self: flex-end;
 }

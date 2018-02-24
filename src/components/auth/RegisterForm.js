@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './RegisterForm.css'
 import { Link } from 'react-router-dom'
+import Box from '../../atoms/Box'
+import Input from '../../atoms/Input'
+import Button from '../../atoms/Button'
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -27,43 +30,45 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div className="Component--RegisterForm">
-        <input
+      <Box className="Component--RegisterForm">
+        <Input
           type="text"
           value={this.state.username}
           onChange={e => this.onInputChange(e.target.value, 'username')}
           placeholder="Username"
         />
 
-        <input
+        <Input
           type="text"
           value={this.state.email}
           onChange={e => this.onInputChange(e.target.value, 'email')}
           placeholder="Email"
         />
 
-        <input
+        <Input
           type="password"
           value={this.state.password}
           onChange={e => this.onInputChange(e.target.value, 'password')}
           placeholder="Password"
         />
 
-        <button
-          onClick={() => this.props.onSubmit({
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
-          }, this.clearRegisterForm.bind(this))}
-          type="button"
-        >
-          Register
-        </button>
+        <div className="buttons-container">
+          <Button
+            onClick={() => this.props.onSubmit({
+              username: this.state.username,
+              email: this.state.email,
+              password: this.state.password
+            }, this.clearRegisterForm.bind(this))}
+            type="button"
+          >
+            Register
+          </Button>
 
-        <div>
-          <Link to="/login">login</Link>
+          <div>
+            <Link to="/login">login</Link>
+          </div>
         </div>
-      </div>
+      </Box>
     )
   }
 }
