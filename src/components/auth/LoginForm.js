@@ -40,7 +40,6 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={e => this.onInputChange(e.target.value, 'password')}
             validate={e => {
-              console.warn(e.target.value);
               return e.target.value === '' ? 'Invalid password' : null
             }}
           />
