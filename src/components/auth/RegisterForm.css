@@ -13,14 +13,7 @@
 
 .Component--RegisterForm .buttons-container {
   display: flex;
+  align-items: center;
   flex-direction: row-reverse;
   justify-content: space-between;
-}
-
-.Component--RegisterForm .buttons-container .Atom--Button {
-  align-self: flex-start;
-}
-
-.Component--RegisterForm .buttons-container .Atom--Button {
-  align-self: flex-end;
 }

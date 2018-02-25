@@ -13,14 +13,7 @@
 
 .Component--LoginForm .buttons-container {
   display: flex;
+  align-items: center;
   flex-direction: row-reverse;
   justify-content: space-between;
-}
-
-.Component--LoginForm .buttons-container .Atom--Button {
-  align-self: flex-start;
-}
-
-.Component--LoginForm .buttons-container .Atom--Button {
-  align-self: flex-end;
 }
