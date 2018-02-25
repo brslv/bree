@@ -11,20 +11,33 @@
   border-radius: 2px;
 }
 
+.Atom--Button[disabled] {
+  cursor: auto;
+  background-color: #eee;
+  border: 1px solid transparent;
+  color: #a8a8a8;
+}
+
 .Atom--Button.stroke-only {
   color: #a97a86;
   border-color: #a97a86;
   background: transparent !important;
 }
 
-.Atom--Button.stroke-only:focus,
-.Atom--Button.stroke-only:hover {
+.Atom--Button.stroke-only[disabled] {
+  color: #a8a8a8;
+  border-color: #eee;
+  background: transparent !important;
+}
+
+.Atom--Button.stroke-only:focus:not([disabled]),
+.Atom--Button.stroke-only:hover:not([disabled]) {
   color: #222a40 !important;
   border-color: #222a40;
 }
 
-.Atom--Button:hover,
-.Atom--Button:focus {
+.Atom--Button:hover:not([disabled]),
+.Atom--Button:focus:not([disabled]) {
   outline: none;
   border: 1px solid #a97e86;
   background: #a97a86;

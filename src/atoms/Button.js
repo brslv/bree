@@ -2,22 +2,19 @@ import React from 'react'
 import './Button.css'
 
 const Button = (props) => {
-  const classNames = props.classNames
-    ? [
-      'Atom--Button',
-      ...props.className
-    ]
-    : ['Atom--Button']
+    let classNames = 'Atom--Button'
 
-  if (props.rounded) {
-    classNames.push('rounded')
-  }
+    if (props.className) {
+      classNames += ` ${props.className}`
+    }
 
-  if (props.strokeOnly) {
-    classNames.push('stroke-only')
-  }
+    return <button
+      {...props}
+      className={classNames}
+    >
+      {props.children}
+    </button>
 
-  return <button {...props} className={classNames.join(' ')}>{props.children}</button>
 }
 
 export default Button
