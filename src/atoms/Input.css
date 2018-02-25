@@ -3,6 +3,7 @@
   padding: 1rem;
   font-size: 1rem;
   border: 1px solid #efe1e0;
+  border-radius: 2px;
 }
 
 .Atom--Input:focus {
