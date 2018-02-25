@@ -23,17 +23,28 @@ class LoginForm extends Component {
   render() {
     return (
       <Box className="Component--LoginForm">
-        <Input
-          type="text"
-          placeholder="Username"
-          onChange={e => this.onInputChange(e.target.value, 'username')}
+        <div className="input-group">
+          <Input
+            type="text"
+            placeholder="Username"
+            onChange={e => this.onInputChange(e.target.value, 'username')}
+            validate={e => {
+              return e.target.value === '' ? 'Invalid username' : null
+            }}
           />
+        </div>
 
-        <Input
-          type="password"
-          placeholder="Password"
-          onChange={e => this.onInputChange(e.target.value, 'password')}
+        <div className="input-group">
+          <Input
+            type="password"
+            placeholder="Password"
+            onChange={e => this.onInputChange(e.target.value, 'password')}
+            validate={e => {
+              console.warn(e.target.value);
+              return e.target.value === '' ? 'Invalid password' : null
+            }}
           />
+        </div>
 
         <div className="buttons-container">
           <Button
@@ -42,7 +53,8 @@ class LoginForm extends Component {
               username: this.state.username,
               password: this.state.password
             })}
-            >
+            disabled={this.state.username.trim() === '' || this.state.password.trim() === ''}
+          >
             Login
           </Button>
           <p><Link to="/register">register</Link></p>

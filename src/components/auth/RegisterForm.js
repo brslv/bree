@@ -31,26 +31,38 @@ class RegisterForm extends Component {
   render() {
     return (
       <Box className="Component--RegisterForm">
-        <Input
-          type="text"
-          value={this.state.username}
-          onChange={e => this.onInputChange(e.target.value, 'username')}
-          placeholder="Username"
-        />
+        <div className="input-group">
+          <Input
+            type="text"
+            value={this.state.username}
+            onChange={e => this.onInputChange(e.target.value, 'username')}
+            placeholder="Username"
+            validate={e => {
+              return e.target.value.trim() === '' ? 'Invalid username' : null
+            }}
+          />
+        </div>
 
-        <Input
-          type="text"
-          value={this.state.email}
-          onChange={e => this.onInputChange(e.target.value, 'email')}
-          placeholder="Email"
-        />
+        <div className="input-group">
+          <Input
+            type="email"
+            value={this.state.email}
+            onChange={e => this.onInputChange(e.target.value, 'email')}
+            placeholder="Email"
+          />
+        </div>
 
-        <Input
-          type="password"
-          value={this.state.password}
-          onChange={e => this.onInputChange(e.target.value, 'password')}
-          placeholder="Password"
-        />
+        <div className="input-group">
+          <Input
+            type="password"
+            value={this.state.password}
+            onChange={e => this.onInputChange(e.target.value, 'password')}
+            placeholder="Password"
+            validate={e => {
+              return e.target.value.trim() === '' ? 'Invalid password' : null
+            }}
+          />
+        </div>
 
         <div className="buttons-container">
           <Button
@@ -59,6 +71,11 @@ class RegisterForm extends Component {
               email: this.state.email,
               password: this.state.password
             }, this.clearRegisterForm.bind(this))}
+            disabled={
+              this.state.username.trim() === ''
+              || this.state.email.trim() === ''
+              || this.state.password.trim() === ''
+            }
             type="button"
           >
             Register
