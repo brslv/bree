@@ -6,11 +6,15 @@
   1rem
 
   --- colors
+  #f9f9f9 - login/register background
   #eee    - gray
   #a8a8a8 - dark gray
   #efe1e0 - light creme
   #222a40 - dark blue
   #a97e86 - accent creme
+
+  --- shadows
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
 **/
 
@@ -362,6 +366,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   color: #222a40;
+  background: #f9f9f9;
 }
 
 h1, h2, h3, h4 { font-weight: 400; }

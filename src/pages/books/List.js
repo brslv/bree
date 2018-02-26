@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import BooksList from '../../components/books/BooksList'
 import { requestBooks } from '../../actionCreators/books'
+import './List.css'
 
 class List extends Component {
   componentDidMount() {
@@ -11,9 +12,13 @@ class List extends Component {
 
   render() {
     return (
-      <div className="Page--Books">
-        <h1>Books list page</h1>
-        <BooksList books={this.props.books} />
+      <div className="Page--Books-list">
+        <div className="title">
+          <h2>Books list</h2>
+        </div>
+        <div className="content">
+          <BooksList books={this.props.books} />
+        </div>
       </div>
     );
   }

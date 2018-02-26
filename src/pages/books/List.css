@@ -1,0 +1,19 @@
+.Page--Books-list {
+  height: 100%;
+}
+
+.Page--Books-list > .title {
+  background-color: #222a40 !important;
+  color: #fff;
+}
+
+.Page--Books-list > .title,
+.Page--Books-list > .content {
+  padding: 1em;
+}
+
+.Page--Books-list > .title {
+  background: #fff;
+  display: block;
+  margin-top: 0;
+}

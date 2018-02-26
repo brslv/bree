@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 1em;
+  padding: 2em 1.5em;
   background: #fff;
   border-left: 1px solid #eee;
   height: 100%;
@@ -13,11 +13,16 @@
 
 .Component--Navigation.hidden {
   border-left: none;
+  background: transparent;
 }
 
 .Component--Navigation .hamburger {
   user-select: none;
   cursor: pointer;
+  background-color: #fff;
+  padding: 0 6.5px;
+  margin-bottom: 1em;
+  border-radius: 50%;
 }
 
 .Component--Navigation .list {
