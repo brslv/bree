@@ -15,6 +15,11 @@ import {
 } from '../utils/db'
 import { addNotification } from '../actionCreators/notifications'
 import { userDataStoreKey } from '../.data'
+import {
+  invalidCredentials,
+  successfullRegistration,
+  userAlreadyExists
+} from '../notifications'
 
 const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }
@@ -39,13 +44,13 @@ const register = ({
         if (response.status === 201) {
           dispatch(registerReady(response))
           clearRegisterForm()
-          dispatch(addNotification({ content: 'Successful registration 🎉' }))
+          dispatch(addNotification(successfullRegistration()))
 
           history.push('/login')
         }
 
         if (response.status === 409) {
-          dispatch(addNotification({ content: 'User already exists' }))
+          dispatch(addNotification(userAlreadyExists()))
         }
       })
   }
@@ -74,8 +79,6 @@ const login = ({
         dispatch(stopLoading())
 
         if (response.status === 200) {
-          dispatch(addNotification({ content: 'Success!' }))
-
           response.json().then(userData => {
             const essentialUserData = {
               username: userData.username,
@@ -93,7 +96,7 @@ const login = ({
         }
 
         if (response.status === 401) {
-          dispatch(addNotification({ content: 'Invalid credentials. Please, try again.' }))
+          dispatch(addNotification(invalidCredentials()))
         }
       })
   }
