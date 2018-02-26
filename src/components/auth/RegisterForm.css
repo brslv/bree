@@ -2,18 +2,4 @@
   min-width: 250px;
   width: 300px;
   max-width: 350px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 2px;
-}
-
-.Component--RegisterForm .input-group {
-  margin-bottom: 1rem;
-}
-
-.Component--RegisterForm .buttons-container {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  justify-content: space-between;
 }

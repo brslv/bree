@@ -16,12 +16,12 @@ class Input extends Component {
       ? this.props.validate(e)
       : this.validateByInputType(e)
 
-    this.setState({ error })
-    this.props.onBlur && this.props.onBlur(e)
+    this.setState({ error }, () => {
+      this.props.onBlur && this.props.onBlur(e)
+    })
   }
 
   validateByInputType(e) {
-    console.log(this.props.type)
     if (this.props.type === 'email') {
       return !validateEmail(e.target.value)
         ? 'Invalid email'

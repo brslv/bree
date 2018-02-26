@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import Input from '../../atoms/Input'
 import Button from '../../atoms/Button'
 import Box from '../../atoms/Box'
+import Form from './Form'
 
 class LoginForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      hasErrors: false
     }
   }
 
@@ -20,44 +22,64 @@ class LoginForm extends Component {
     })
   }
 
+  onInputBlur(e) {
+    const errors = []
+
+    for (let key in this.refs) {
+      const error = this.refs[key].state.error
+
+      if (error) {
+        errors.push(error)
+      }
+    }
+
+    this.setState({ hasErrors: !!errors.length })
+  }
+
   render() {
     return (
       <Box className="Component--LoginForm">
-        <div className="input-group">
-          <Input
-            type="text"
-            placeholder="Username"
-            onChange={e => this.onInputChange(e.target.value, 'username')}
-            validate={e => {
-              return e.target.value === '' ? 'Invalid username' : null
-            }}
-          />
-        </div>
+        <Form>
+          <div className="input-group">
+            <Input
+              ref="username"
+              type="text"
+              placeholder="Username"
+              onChange={e => this.onInputChange(e.target.value, 'username')}
+              onBlur={e => this.onInputBlur(e)}
+              validate={e => {
+                return e.target.value === '' ? 'Invalid username' : null
+              }}
+            />
+          </div>
 
-        <div className="input-group">
-          <Input
-            type="password"
-            placeholder="Password"
-            onChange={e => this.onInputChange(e.target.value, 'password')}
-            validate={e => {
-              return e.target.value === '' ? 'Invalid password' : null
-            }}
-          />
-        </div>
+          <div className="input-group">
+            <Input
+              ref="password"
+              type="password"
+              placeholder="Password"
+              onChange={e => this.onInputChange(e.target.value, 'password')}
+              onBlur={e => this.onInputBlur(e)}
+              validate={e => {
+                return e.target.value === '' ? 'Invalid password' : null
+              }}
+            />
+          </div>
 
-        <div className="buttons-container">
-          <Button
-            type="button"
-            onClick={() => this.props.onSubmit({
-              username: this.state.username,
-              password: this.state.password
-            })}
-            disabled={this.state.username.trim() === '' || this.state.password.trim() === ''}
-          >
-            Login
-          </Button>
-          <p><Link to="/register">register</Link></p>
-        </div>
+          <div className="buttons-container">
+            <Button
+              type="button"
+              onClick={() => this.props.onSubmit({
+                username: this.state.username,
+                password: this.state.password
+              })}
+              disabled={this.state.username.trim() === '' || this.state.password.trim() === ''}
+            >
+              Login
+            </Button>
+            <p><Link to="/register">register</Link></p>
+          </div>
+        </Form>
       </Box>
     )
   }
