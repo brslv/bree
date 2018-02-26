@@ -372,8 +372,15 @@ a {
   border-bottom: 1px solid #222a40;
 }
 
-a:hover {
+a:hover,
+a:focus {
   border-bottom: 1px solid transparent;
+}
+
+a:focus {
+  border: 1px solid #222a40;
+  outline: none;
+  padding: 2px;
 }
 
 body.inactive {
