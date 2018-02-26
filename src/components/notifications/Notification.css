@@ -1,5 +1,14 @@
 .Component--Notification {
   padding: 1em;
-  border-radius: 10px;
+  border-radius: 2px;
   background: #eee;
+}
+
+.Component--Notification.basic {
+  background: #eee;
+}
+
+.Component--Notification.accent {
+  background: #efe1e0;
+  color: #a97e86;
 }
