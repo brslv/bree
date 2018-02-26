@@ -11,6 +11,10 @@
   border-radius: 2px;
 }
 
+.Atom--Button.small {
+  padding: 0.5rem;
+}
+
 .Atom--Button[disabled] {
   cursor: auto;
   background-color: #eee;

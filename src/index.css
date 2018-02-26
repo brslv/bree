@@ -378,9 +378,7 @@ a:focus {
 }
 
 a:focus {
-  border: 1px solid #222a40;
   outline: none;
-  padding: 2px;
 }
 
 body.inactive {
