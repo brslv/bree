@@ -7,17 +7,34 @@ class Input extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      value: '',
       error: null
     }
   }
 
-  onBlur(e) {
+  runValidation(e) {
     const error = this.props.validate
       ? this.props.validate(e)
       : this.validateByInputType(e)
 
+    return error
+  }
+
+  onChange(e) {
+    const evt = {...e}
+    const error = this.runValidation(evt)
+
+    this.setState({ error, value: e.target.value }, () => {
+      this.props.onChange && this.props.onChange(evt)
+    })
+  }
+
+  onBlur(e) {
+    const evt = {...e}
+    const error = this.runValidation(evt)
+
     this.setState({ error }, () => {
-      this.props.onBlur && this.props.onBlur(e)
+      this.props.onBlur && this.props.onBlur(evt)
     })
   }
 
@@ -52,6 +69,8 @@ class Input extends Component {
       <React.Fragment>
         <input
           {...inputProps}
+          value={this.state.value}
+          onChange={this.onChange.bind(this)}
           onBlur={this.onBlur.bind(this)}
           className={classNames}
         />

@@ -16,13 +16,7 @@ class LoginForm extends Component {
     }
   }
 
-  onInputChange(value, name) {
-    this.setState({
-      [name]: value
-    })
-  }
-
-  onInputBlur(e) {
+  checkInputsForErrors() {
     const errors = []
 
     for (let key in this.refs) {
@@ -32,6 +26,21 @@ class LoginForm extends Component {
         errors.push(error)
       }
     }
+
+    return errors
+  }
+
+  onInputChange(value, name) {
+    const errors = this.checkInputsForErrors()
+
+    this.setState({
+      [name]: value,
+      hasErrors: !!errors.length
+    })
+  }
+
+  onInputBlur(e) {
+    const errors = this.checkInputsForErrors()
 
     this.setState({ hasErrors: !!errors.length })
   }
@@ -73,7 +82,11 @@ class LoginForm extends Component {
                 username: this.state.username,
                 password: this.state.password
               })}
-              disabled={this.state.username.trim() === '' || this.state.password.trim() === ''}
+              disabled={
+                this.state.username.trim() === ''
+                ||this.state.password.trim() === ''
+                || this.state.hasErrors
+              }
             >
               Login
             </Button>

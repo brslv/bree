@@ -18,11 +18,7 @@ class RegisterForm extends Component {
     }
   }
 
-  onInputChange(value, name) {
-    this.setState({ [name]: value })
-  }
-
-  onInputBlur(e) {
+  checkInputsForErrors() {
     const errors = []
 
     for (let key in this.refs) {
@@ -32,6 +28,21 @@ class RegisterForm extends Component {
         errors.push(error)
       }
     }
+
+    return errors
+  }
+
+  onInputChange(value, name) {
+    const errors = this.checkInputsForErrors()
+
+    this.setState({
+      [name]: value,
+      hasErrors: !!errors.length
+    })
+  }
+
+  onInputBlur(e) {
+    const errors = this.checkInputsForErrors()
 
     this.setState({ hasErrors: !!errors.length })
   }
@@ -70,6 +81,21 @@ class RegisterForm extends Component {
               onChange={e => this.onInputChange(e.target.value, 'email')}
               onBlur={e => this.onInputBlur(e)}
               placeholder="Email"
+            />
+          </div>
+
+          <div className="input-group">
+            <Input
+              ref="emailAgain"
+              type="email"
+              onChange={e => this.onInputChange(e.target.value, 'emailAgain')}
+              onBlur={e => this.onInputBlur(e)}
+              validate={e => {
+                if (e.target.value !== this.state.email) {
+                  return `The email address doesn't match`
+                }
+              }}
+              placeholder="Repeat Email"
             />
           </div>
 
