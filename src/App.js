@@ -28,7 +28,7 @@ class App extends Component {
           <Router>
             <React.Fragment>
 
-              {this.props.user ? <Navigation onLogout={this.props.logout} /> : ''}
+              {this.props.user ? <Navigation username={this.props.user.username} onLogout={this.props.logout} /> : ''}
 
               <Route exact path="/" user={this.props.user} component={HomePage} />
               <GuestRoute path="/login" user={this.props.user} component={LoginPage} />

@@ -40,10 +40,13 @@ class Navigation extends Component {
           ☰
         </div>
         <ul className="list">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/books">Books</Link></li>
+          <Link to="/"><li>Home</li></Link>
+          <Link to="/books"><li>Books</li></Link>
         </ul>
-        <Button className="logout-button stroke-only small" onClick={this.props.onLogout}>Logout</Button>
+        <div className="user-info">
+          Logged in as: {this.props.username}
+          <Button className="logout-button stroke-only small" onClick={this.props.onLogout}>Logout</Button>
+        </div>
       </div>
     )
   }

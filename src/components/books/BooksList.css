@@ -6,10 +6,14 @@
   grid-row-gap: 1em;
 }
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .Component--BooksList {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 1em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .Component--BooksList {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

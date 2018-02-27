@@ -6,9 +6,11 @@ const Book = ({ title, description }) => {
   return (
     <Card className="Component--Book">
       <h3 className="title">Book: {title}</h3>
-      <h5 className="content">{description}</h5>
+      <div className="content">{description}</div>
       <div className="footer">
-        <Button className="small">Write</Button>
+        <div className="button-container">
+          <Button className="small">Write</Button>
+        </div>
       </div>
     </Card>
   )
