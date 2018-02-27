@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-import './LoginForm.css'
-import { Link } from 'react-router-dom'
+import Form from '../../atoms/Form'
 import Input from '../../atoms/Input'
 import Button from '../../atoms/Button'
 import Box from '../../atoms/Box'
-import Form from '../../atoms/Form'
 
-class LoginForm extends Component {
+class BooksAddForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
-      password: '',
-      hasErrors: false
+      title: '',
+      description: '',
+      hasErrors: ''
     }
   }
 
@@ -39,50 +37,53 @@ class LoginForm extends Component {
     })
   }
 
+  onSubmit(e) {
+    // TODO: dispatch books submit action
+  }
+
   render() {
     return (
-      <Box className="Component--LoginForm">
+      <Box className="Component--BooksAddForm">
         <Form>
           <div className="input-group">
             <Input
-              ref="username"
+              ref="title"
               type="text"
-              placeholder="Username"
-              onChange={e => this.onInputChange(e.target.value, 'username')}
+              placeholder="Title"
               validate={e => {
-                return e.target.value === '' ? 'Invalid username' : null
+                if (e.target.value.trim() === '') {
+                  return 'Title is required'
+                }
               }}
+              onChange={e => this.onInputChange(e.target.value, 'title')}
             />
           </div>
 
           <div className="input-group">
             <Input
-              ref="password"
-              type="password"
-              placeholder="Password"
-              onChange={e => this.onInputChange(e.target.value, 'password')}
+              ref="description"
+              type="text"
+              placeholder="Description"
               validate={e => {
-                return e.target.value === '' ? 'Invalid password' : null
+                if (e.target.value.trim() === '') {
+                  return 'Description is required'
+                }
               }}
+              onChange={e => this.onInputChange(e.target.value, 'description')}
             />
           </div>
 
           <div className="buttons-container">
             <Button
-              type="button"
-              onClick={() => this.props.onSubmit({
-                username: this.state.username,
-                password: this.state.password
-              })}
+              onClick={this.onSubmit.bind(this)}
               disabled={
-                this.state.username.trim() === ''
-                ||this.state.password.trim() === ''
+                this.state.title.trim === ''
+                || this.state.description.trim() === ''
                 || this.state.hasErrors
               }
             >
-              Login
+              Submit
             </Button>
-            <p><Link to="/register">register</Link></p>
           </div>
         </Form>
       </Box>
@@ -90,4 +91,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default BooksAddForm

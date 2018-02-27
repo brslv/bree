@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Box from '../../atoms/Box'
 import Input from '../../atoms/Input'
 import Button from '../../atoms/Button'
-import Form from './Form'
+import Form from '../../atoms/Form'
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -41,12 +41,6 @@ class RegisterForm extends Component {
     })
   }
 
-  onInputBlur(e) {
-    const errors = this.checkInputsForErrors()
-
-    this.setState({ hasErrors: !!errors.length })
-  }
-
   clearRegisterForm() {
     this.setState({
       username: '',
@@ -65,7 +59,6 @@ class RegisterForm extends Component {
               type="text"
               value={this.state.username}
               onChange={e => this.onInputChange(e.target.value, 'username')}
-              onBlur={e => this.onInputBlur(e)}
               placeholder="Username"
               validate={e => {
                 return e.target.value.trim() === '' ? 'Invalid username' : null
@@ -79,7 +72,6 @@ class RegisterForm extends Component {
               type="email"
               value={this.state.email}
               onChange={e => this.onInputChange(e.target.value, 'email')}
-              onBlur={e => this.onInputBlur(e)}
               placeholder="Email"
             />
           </div>
@@ -89,7 +81,6 @@ class RegisterForm extends Component {
               ref="emailAgain"
               type="email"
               onChange={e => this.onInputChange(e.target.value, 'emailAgain')}
-              onBlur={e => this.onInputBlur(e)}
               validate={e => {
                 if (e.target.value !== this.state.email) {
                   return `The email address doesn't match`
@@ -105,7 +96,6 @@ class RegisterForm extends Component {
               type="password"
               value={this.state.password}
               onChange={e => this.onInputChange(e.target.value, 'password')}
-              onBlur={e => this.onInputBlur(e)}
               placeholder="Password"
               validate={e => {
                 return e.target.value.trim() === '' ? 'Invalid password' : null
