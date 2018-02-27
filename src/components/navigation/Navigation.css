@@ -22,9 +22,12 @@
   user-select: none;
   cursor: pointer;
   background-color: #fff;
-  padding: 6px 12.5px;
+  padding: 8px 14.5px;
   margin: 1em;
   border-radius: 50%;
+}
+
+.Component--Navigation.hidden .hamburger {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
