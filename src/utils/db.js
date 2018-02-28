@@ -19,8 +19,11 @@ const handshake = function () {
 /* books */
 const getAllBooks = function (user) {
   const authHash = user.authToken
+  const filters = JSON.stringify({
+    "_acl.creator": `${user.id}`
+  })
 
-  return fetch(`${BASE_URL}/appdata/${APP_KEY}/books`, {
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/books?query=${filters}`, {
     headers: {
       'authorization': `Kinvey ${authHash}`,
       'content-type': 'application/json'
