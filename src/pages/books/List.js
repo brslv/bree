@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import BooksList from '../../components/books/BooksList'
 import { requestBooks } from '../../actionCreators/books'
+import PageContainer from '../../components/PageContainer'
 import './List.css'
 
 class List extends Component {
@@ -12,14 +13,9 @@ class List extends Component {
 
   render() {
     return (
-      <div className="Page--Books-list">
-        <div className="title">
-          <h2>Books list</h2>
-        </div>
-        <div className="content">
-          <BooksList books={this.props.books} />
-        </div>
-      </div>
+      <PageContainer title="Books list" className="Page--Books-list">
+        <BooksList books={this.props.books} />
+      </PageContainer>
     );
   }
 }

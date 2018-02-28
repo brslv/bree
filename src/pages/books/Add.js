@@ -2,19 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import BooksAddForm from '../../components/books/BooksAddForm'
+import PageContainer from '../../components/PageContainer'
 import { addBook } from '../../actionCreators/books'
 
 class Add extends Component {
   render() {
     return (
-      <div className="Page--Books-add">
-        <h1>Books Add page</h1>
+      <PageContainer title="Add new book" className="Page--Books-add">
         <BooksAddForm
           user={this.props.user}
           onSubmit={this.props.addBook}
           history={this.props.history}
         />
-      </div>
+      </PageContainer>
     );
   }
 }
