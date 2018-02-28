@@ -7,8 +7,6 @@ const PageContainer = (props) => {
     className += ` ${props.className}`
   }
 
-  console.log(className)
-
   return (
     <div className={className}>
       <div className="page-title">
