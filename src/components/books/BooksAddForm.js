@@ -54,7 +54,7 @@ class BooksAddForm extends Component {
             <Input
               ref="title"
               type="text"
-              placeholder="Title"
+              placeholder="Book title"
               validate={e => {
                 if (e.target.value.trim() === '') {
                   return 'Title is required'
@@ -68,7 +68,7 @@ class BooksAddForm extends Component {
             <Input
               ref="description"
               type="text"
-              placeholder="Description"
+              placeholder="Short description"
               validate={e => {
                 if (e.target.value.trim() === '') {
                   return 'Description is required'
