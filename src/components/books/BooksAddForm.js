@@ -38,6 +38,10 @@ class BooksAddForm extends Component {
   }
 
   onSubmit(e) {
+    this.props.onSubmit(this.props.user, {
+      title: this.state.title,
+      description: this.state.description
+    })
     // TODO: dispatch books submit action
   }
 

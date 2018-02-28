@@ -29,6 +29,24 @@ const getAllBooks = function (user) {
     .then(r => r.json())
 }
 
+const addBook = function (user, book) {
+  const authHash = user.authToken
+
+  console.log(authHash)
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/books`, {
+    'method': 'POST',
+    'body': JSON.stringify({
+      title: book.title,
+      description: book.description
+    }),
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json',
+    }
+  })
+    .then(r => r.json())
+}
+
 /* users */
 function register(username, email, password) {
   return fetch(`${BASE_URL}/user/${APP_KEY}`, {
@@ -74,6 +92,7 @@ export {
 
   /* books */
   getAllBooks,
+  addBook,
 
   /* users */
   register,

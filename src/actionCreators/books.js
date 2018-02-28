@@ -1,8 +1,9 @@
 import {
   REQUEST_BOOKS,
-  RECEIVE_BOOKS
+  RECEIVE_BOOKS,
+  BOOK_ADDED
 } from '../actions/books'
-import { getAllBooks } from '../utils/db'
+import { getAllBooks, addBook as addNewBook } from '../utils/db'
 import { startLoading, stopLoading } from './isLoading'
 
 const requestBooks = (user) => {
@@ -20,6 +21,23 @@ const requestBooks = (user) => {
   }
 }
 
+const addBook = (book, user) => {
+  return async (dispatch) => {
+    dispatch(startLoading())
+
+    const bookData = await addNewBook(book, user)
+
+    console.warn('The new book: ', bookData)
+
+    dispatch(stopLoading())
+    dispatch({
+      type: BOOK_ADDED,
+      payload: bookData
+    })
+  }
+}
+
 export {
-  requestBooks
+  requestBooks,
+  addBook
 }
