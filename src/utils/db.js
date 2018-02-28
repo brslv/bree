@@ -26,13 +26,11 @@ const getAllBooks = function (user) {
       'content-type': 'application/json'
     }
   })
-    .then(r => r.json())
 }
 
 const addBook = function (user, book) {
   const authHash = user.authToken
 
-  console.log(authHash)
   return fetch(`${BASE_URL}/appdata/${APP_KEY}/books`, {
     'method': 'POST',
     'body': JSON.stringify({

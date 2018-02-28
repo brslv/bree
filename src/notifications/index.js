@@ -16,8 +16,29 @@ const userAlreadyExists = () => {
   }
 }
 
+const getAllBooksFail = () => {
+  return {
+    content: `Could't fetch books. Please, try again later.`
+  }
+}
+
+const bookAddFail = () => {
+  return {
+    content: `Couldn't save your book. Please, try again later.`
+  }
+}
+
+const bookAddSuccess = () => {
+  return {
+    content: 'A new book has been added. 🎉'
+  }
+}
+
 export {
   invalidCredentials,
   successfullRegistration,
-  userAlreadyExists
+  userAlreadyExists,
+  getAllBooksFail,
+  bookAddSuccess,
+  bookAddFail
 }

@@ -6,13 +6,27 @@ import {
 import { getAllBooks, addBook as addNewBook } from '../utils/db'
 import { startLoading, stopLoading } from './isLoading'
 import { addNotification } from '../actionCreators/notifications'
+import {
+  bookAddFail,
+  bookAddSuccess,
+  getAllBooksFail
+} from '../notifications'
 
 const requestBooks = (user) => {
   return async (dispatch) => {
     dispatch({ type: REQUEST_BOOKS })
     dispatch(startLoading())
 
-    const books = await getAllBooks(user)
+    const response = await getAllBooks(user)
+
+    if (response.status !== 200 || !response.ok) {
+      dispatch(stopLoading())
+      dispatch(addNotification(getAllBooksFail()))
+      // TODO: dispatch error notification
+      return
+    }
+
+    const books = await response.json()
 
     dispatch(stopLoading())
     dispatch({
@@ -28,9 +42,9 @@ const addBook = (book, user, history) => {
 
     const response = await addNewBook(book, user)
 
-    if (response.status !== 201) {
+    if (response.status !== 201 || !response.ok) {
       dispatch(stopLoading())
-      dispatch(addNotification({ content: `Couldn't save your book. Please, try again later.` }))
+      dispatch(addNotification(bookAddFail()))
       return
     }
 
@@ -41,7 +55,7 @@ const addBook = (book, user, history) => {
       type: BOOK_ADDED,
       payload: bookData
     })
-    dispatch(addNotification({ content: 'A new book has been added. 🎉'}))
+    dispatch(addNotification(bookAddSuccess()))
 
     if (history) {
       history.push('/books')
