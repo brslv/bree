@@ -44,7 +44,6 @@ const addBook = function (user, book) {
       'content-type': 'application/json',
     }
   })
-    .then(r => r.json())
 }
 
 /* users */
