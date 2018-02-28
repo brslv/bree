@@ -3,7 +3,12 @@ import Box from './Box'
 import './Card.css'
 
 const Card = (props) => {
-  return <Box className="Component--Card">{props.children}</Box>
+  let className = 'Component--Card'
+  if (props.className) {
+    className += ` ${props.className}`
+  }
+
+  return <Box className={className}>{props.children}</Box>
 }
 
 export default Card
