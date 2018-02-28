@@ -21,6 +21,14 @@ class Navigation extends Component {
     this.setState({ hidden: true })
   }
 
+  toggle() {
+    this.state.hidden ? this.show() : this.hide()
+  }
+
+  onNavigationItemsClick(e) {
+    this.hide()
+  }
+
   render() {
     let className = `Component--Navigation`
     if (this.state.hidden) {
@@ -34,12 +42,12 @@ class Navigation extends Component {
       >
         <div
           className="hamburger"
-          onClick={this.show.bind(this)}
+          onClick={this.toggle.bind(this)}
           onMouseEnter={this.show.bind(this)}
         >
           ☰
         </div>
-        <ul className="list">
+        <ul className="list" onClick={this.onNavigationItemsClick.bind(this)}>
           <Link to="/"><li>Home</li></Link>
           <Link to="/books"><li>List Books</li></Link>
           <Link to="/books/add"><li>Add new book</li></Link>
