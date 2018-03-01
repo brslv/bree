@@ -7,7 +7,7 @@ class Input extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: '',
+      value: props.value || '',
       error: null
     }
   }

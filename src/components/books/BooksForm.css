@@ -1,9 +1,9 @@
-.Component--BooksAddForm {
+.Component--BooksForm {
   grid-column: 1 / span 3;
 }
 
 @media only screen and (min-width: 900px) {
-  .Component--BooksAddForm {
+  .Component--BooksForm {
     grid-column: 2 / 3;
   }
 }

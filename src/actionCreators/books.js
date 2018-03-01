@@ -22,7 +22,6 @@ const requestBooks = (user) => {
     if (response.status !== 200 || !response.ok) {
       dispatch(stopLoading())
       dispatch(addNotification(getAllBooksFail()))
-      // TODO: dispatch error notification
       return
     }
 

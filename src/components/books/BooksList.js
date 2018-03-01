@@ -19,7 +19,12 @@ class BooksList extends Component {
 
   renderBooksList(books) {
     return books.map(book => {
-      return <Book key={book._id} title={book.title} description={book.description} />
+      return <Book
+        key={book._id}
+        id={book._id}
+        title={book.title}
+        description={book.description}
+      />
     })
   }
 

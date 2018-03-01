@@ -31,6 +31,20 @@ const getAllBooks = function (user) {
   })
 }
 
+const getBook = function (user, id) {
+  const authHash = user.authToken
+  const filters = JSON.stringify({
+    _id: id
+  })
+
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/books?query=${filters}`, {
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json'
+    }
+  })
+}
+
 const addBook = function (user, book) {
   const authHash = user.authToken
 
@@ -92,6 +106,7 @@ export {
 
   /* books */
   getAllBooks,
+  getBook,
   addBook,
 
   /* users */

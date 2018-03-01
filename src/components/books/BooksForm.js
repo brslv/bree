@@ -3,14 +3,23 @@ import Form from '../../atoms/Form'
 import Input from '../../atoms/Input'
 import Button from '../../atoms/Button'
 import Box from '../../atoms/Box'
-import './BooksAddForm.css'
+import './BooksForm.css'
 
-class BooksAddForm extends Component {
+class BooksForm extends Component {
   constructor(props) {
     super(props)
+
+    let bookToEdit = {}
+    if (props.book) {
+      bookToEdit = {
+        title: props.book.title,
+        description: props.book.description,
+      }
+    }
+
     this.state = {
-      title: '',
-      description: '',
+      title: bookToEdit.title || '',
+      description: bookToEdit.description || '',
       hasErrors: ''
     }
   }
@@ -48,12 +57,13 @@ class BooksAddForm extends Component {
 
   render() {
     return (
-      <Box className="Component--BooksAddForm">
+      <Box className="Component--BooksForm">
         <Form>
           <div className="input-group">
             <Input
               ref="title"
               type="text"
+              value={this.state.title}
               placeholder="Book title"
               validate={e => {
                 if (e.target.value.trim() === '') {
@@ -68,6 +78,7 @@ class BooksAddForm extends Component {
             <Input
               ref="description"
               type="text"
+              value={this.state.description}
               placeholder="Short description"
               validate={e => {
                 if (e.target.value.trim() === '') {
@@ -96,4 +107,4 @@ class BooksAddForm extends Component {
   }
 }
 
-export default BooksAddForm
+export default BooksForm

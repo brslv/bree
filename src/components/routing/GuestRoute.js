@@ -6,10 +6,10 @@ import {
 } from 'react-router-dom'
 
 const GuestRoute = ({ component: Component, ...props }) => {
-  return <Route {...props} render={() => {
+  return <Route {...props} render={(renderProps) => {
     if (!props.user) {
       return (
-        <Component {...props} />
+        <Component {...props} {...renderProps} />
       )
     } else {
       return (
