@@ -5,22 +5,3 @@
   border-radius: 2px;
   justify-content: space-between;
 }
-
-.Component--Card .title {
-  margin: 0;
-  padding: 1em;
-  border-bottom: 1px solid #eee;
-}
-
-.Component--Card .content {
-  margin: 0;
-  padding: 1em 1.5em;
-  flex: 1 0 auto;
-}
-
-.Component--Card .footer {
-  border-top: 1px solid #eee;
-  padding: 1em;
-  display: flex;
-  flex-shrink: 0;
-}

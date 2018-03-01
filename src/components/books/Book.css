@@ -1,4 +1,38 @@
+.Component--Book .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1em;
+  border-bottom: 1px solid #eee;
+}
+
+.Component--Book .header .title {
+  margin: 0.3em 0;
+}
+
+.Component--Book .header .delete-button {
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2em;
+}
+
+.Component--Book .content {
+  margin: 0;
+  padding: 1em 1.5em;
+  flex: 1 0 auto;
+}
+
 .Component--Book .footer {
+  border-top: 1px solid #eee;
+  padding: 1em;
+  display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
 }
