@@ -1,39 +1,69 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Button from './Button'
 import Card from './Card'
 import './Confirmation.css'
 
-const Confirmation = (props) => {
-  return (
-    <div className="Atom--Confirmation">
-      <div className="wrapper">
-        <Card className="container">
-          <div className="content">
-            {props.children}
-          </div>
+class Confirmation extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    this.escapeKeyListener = this.escapeKeyListener.bind(this)
+  }
 
-          <div className="controls">
-            <Button
-              onClick={e => props.onConfirm(e, { confirmed: false })}
-              className="small stroke-only"
-            >
-              Cancel
-            </Button>
+  onClick(e) {
+    if (e.target.classList.contains('wrapper')) {
+      this.props.onConfirm(e, { confirmed: false })
+    }
+  }
 
-            &nbsp;
+  escapeKeyListener(e) {
+    if (e.keyCode === 27) {
+      this.props.onConfirm(e, { confirmed: false })
+    } else if (e.keyCode === 13) {
+      this.props.onConfirm(e, { confirmed: true })
+    }
+  }
 
-            <Button
-              onClick={e => props.onConfirm(e, { confirmed: true })}
-              className="small"
-            >
-              Sure, do it
-            </Button>
-          </div>
-        </Card>
+  componentDidMount() {
+    window.addEventListener('keyup', this.escapeKeyListener)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keyup', this.escapeKeyListener)
+  }
+
+  render() {
+    return (
+      <div className="Atom--Confirmation">
+        <div className="wrapper" onClick={this.onClick.bind(this)}>
+          <Card className="container">
+            <div className="content">
+              {this.props.children}
+            </div>
+
+            <div className="controls">
+              <Button
+                onClick={e => this.props.onConfirm(e, { confirmed: false })}
+                className="small stroke-only"
+              >
+                Cancel
+              </Button>
+
+              &nbsp;
+
+              <Button
+                onClick={e => this.props.onConfirm(e, { confirmed: true })}
+                className="small"
+              >
+                Sure, do it
+              </Button>
+            </div>
+          </Card>
+        </div>
+        <div className="overlay" onClick={this.onClick.bind(this)}></div>
       </div>
-      <div className="overlay"></div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Confirmation

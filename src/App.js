@@ -40,14 +40,14 @@ class App extends Component {
               <PrivateRoute exact path="/books/:id/edit" user={this.props.user} component={BooksEditPage} />
 
               <NotificationsDrawer notifications={this.props.notifications} />
-              {this.props.isLoading ? <Loader /> : ''}
+              {this.props.isLoading ? <Loader /> : null}
 
               {
                 this.props.confirmation
                 ? <Confirmation onConfirm={this.props.confirmation.onConfirm}>
                     {this.props.confirmation.text}
                   </Confirmation>
-                : ''
+                : null
               }
 
             </React.Fragment>
