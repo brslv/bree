@@ -1,11 +1,13 @@
 import {
   REQUEST_BOOKS,
   RECEIVE_BOOKS,
-  BOOK_ADDED
+  BOOK_ADDED,
+  BOOK_DELETED
 } from '../actions/books'
 import {
   getAllBooks,
-  addBook as addNewBook
+  addBook as addNewBook,
+  deleteBook as deleteExistingBook
 } from '../utils/db'
 import {
   startLoading,
@@ -68,7 +70,29 @@ const addBook = (book, user, history) => {
   }
 }
 
+const deleteBook = (id, user) => {
+  return async (dispatch) => {
+    dispatch(startLoading())
+
+    const response = await deleteExistingBook(id, user)
+
+    if (response.status !== 200 || !response.ok) {
+      dispatch(stopLoading())
+      // TODO: add fail notification
+      return
+    }
+
+    dispatch(stopLoading())
+    dispatch({
+      type: BOOK_DELETED,
+      payload: id
+    })
+    // dispatch(addNotification(bookAddSuccess()))
+  }
+}
+
 export {
   requestBooks,
-  addBook
+  addBook,
+  deleteBook
 }

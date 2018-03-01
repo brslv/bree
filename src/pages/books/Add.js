@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addBook: (user, book) => dispatch(addBook(
+    addBook: (book, user) => dispatch(addBook(
       user,
       book,
       ownProps.history

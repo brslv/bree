@@ -24,6 +24,7 @@ class BooksList extends Component {
         id={book._id}
         title={book.title}
         description={book.description}
+        user={this.props.user}
       />
     })
   }

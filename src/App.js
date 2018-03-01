@@ -42,9 +42,13 @@ class App extends Component {
               <NotificationsDrawer notifications={this.props.notifications} />
               {this.props.isLoading ? <Loader /> : ''}
 
-              <Confirmation>
-                Are you sure you want to delete this important item???
-              </Confirmation>
+              {
+                this.props.confirmation
+                ? <Confirmation onConfirm={this.props.confirmation.onConfirm}>
+                    {this.props.confirmation.text}
+                  </Confirmation>
+                : ''
+              }
 
             </React.Fragment>
           </Router>
@@ -58,7 +62,8 @@ const mapStateToProps = state => {
   return {
     isLoading: state.isLoading,
     notifications: state.notifications,
-    user: state.user
+    confirmation: state.confirmation,
+    user: state.user,
   }
 }
 

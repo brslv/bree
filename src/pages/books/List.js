@@ -14,7 +14,7 @@ class List extends Component {
   render() {
     return (
       <PageContainer title="Books list" className="Page--Books-list">
-        <BooksList books={this.props.books} />
+        <BooksList user={this.props.user} books={this.props.books} />
       </PageContainer>
     );
   }

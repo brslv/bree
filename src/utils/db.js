@@ -79,6 +79,18 @@ const editBook = function (book, user) {
   })
 }
 
+const deleteBook = function (id, user) {
+  const authHash = user.authToken
+
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/books/${id}`, {
+    'method': 'DELETE',
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json',
+    }
+  })
+}
+
 /* users */
 function register(username, email, password) {
   return fetch(`${BASE_URL}/user/${APP_KEY}`, {
@@ -127,6 +139,7 @@ export {
   getBook,
   addBook,
   editBook,
+  deleteBook,
 
   /* users */
   register,
