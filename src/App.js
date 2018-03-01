@@ -8,6 +8,7 @@ import {
   Route
 } from 'react-router-dom'
 import './App.css'
+import Confirmation from './atoms/Confirmation'
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
 import Navigation from './components/navigation/Navigation'
@@ -40,6 +41,10 @@ class App extends Component {
 
               <NotificationsDrawer notifications={this.props.notifications} />
               {this.props.isLoading ? <Loader /> : ''}
+
+              <Confirmation>
+                Are you sure you want to delete this important item???
+              </Confirmation>
 
             </React.Fragment>
           </Router>
