@@ -46,6 +46,18 @@ const bookEditSuccess = () => {
   }
 }
 
+const bookDeleteFail = () => {
+  return {
+    content: `Couldn't delete your book. Please, try again later.`
+  }
+}
+
+const bookDeleteSuccess = () => {
+  return {
+    content: 'Your book has been deleted successfully. 🎉'
+  }
+}
+
 export {
   invalidCredentials,
   successfullRegistration,
@@ -54,5 +66,7 @@ export {
   bookAddSuccess,
   bookAddFail,
   bookEditSuccess,
-  bookEditFail
+  bookEditFail,
+  bookDeleteSuccess,
+  bookDeleteFail
 }

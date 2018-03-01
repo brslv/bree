@@ -17,7 +17,9 @@ import { addNotification } from '../actionCreators/notifications'
 import {
   bookAddFail,
   bookAddSuccess,
-  getAllBooksFail
+  bookDeleteFail,
+  bookDeleteSuccess,
+  getAllBooksFail,
 } from '../notifications'
 
 const requestBooks = (user) => {
@@ -78,7 +80,7 @@ const deleteBook = (id, user) => {
 
     if (response.status !== 200 || !response.ok) {
       dispatch(stopLoading())
-      // TODO: add fail notification
+      dispatch(addNotification(bookDeleteFail()))
       return
     }
 
@@ -87,7 +89,7 @@ const deleteBook = (id, user) => {
       type: BOOK_DELETED,
       payload: id
     })
-    // dispatch(addNotification(bookAddSuccess()))
+    dispatch(addNotification(bookDeleteSuccess()))
   }
 }
 
