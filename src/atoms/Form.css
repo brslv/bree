@@ -1,7 +1,7 @@
 .Atom--Form {
   display: flex;
   flex-direction: column;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .Atom--Form .input-group {

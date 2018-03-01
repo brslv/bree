@@ -6,7 +6,8 @@
   1rem
 
   --- colors
-  #f9f9f9 - login/register background
+  #e5e5e5 - page background
+  #f9f9f9 - light gray
   #eee    - gray
   #a8a8a8 - dark gray
   #efe1e0 - light creme
@@ -366,7 +367,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   color: #222a40;
-  background: #f9f9f9;
+  background: #e5e5e5;
 }
 
 h1, h2, h3, h4, h5 { font-weight: 400; }
