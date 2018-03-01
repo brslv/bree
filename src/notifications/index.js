@@ -6,13 +6,13 @@ const invalidCredentials = () => {
 
 const successfullRegistration = () => {
   return {
-    content: 'Successful registration 🎉'
+    content: 'Successful registration. 🎉'
   }
 }
 
 const userAlreadyExists = () => {
   return {
-    content: 'User already exists 😲'
+    content: 'User already exists. 😲'
   }
 }
 
@@ -34,11 +34,25 @@ const bookAddSuccess = () => {
   }
 }
 
+const bookEditFail = () => {
+  return {
+    content: `Couldn't edit your book. Please, try again later.`
+  }
+}
+
+const bookEditSuccess = () => {
+  return {
+    content: 'Your book has been edited successfully. 🎉'
+  }
+}
+
 export {
   invalidCredentials,
   successfullRegistration,
   userAlreadyExists,
   getAllBooksFail,
   bookAddSuccess,
-  bookAddFail
+  bookAddFail,
+  bookEditSuccess,
+  bookEditFail
 }

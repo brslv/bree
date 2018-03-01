@@ -3,8 +3,14 @@ import {
   RECEIVE_BOOKS,
   BOOK_ADDED
 } from '../actions/books'
-import { getAllBooks, addBook as addNewBook } from '../utils/db'
-import { startLoading, stopLoading } from './isLoading'
+import {
+  getAllBooks,
+  addBook as addNewBook
+} from '../utils/db'
+import {
+  startLoading,
+  stopLoading
+} from './isLoading'
 import { addNotification } from '../actionCreators/notifications'
 import {
   bookAddFail,
