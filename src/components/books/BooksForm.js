@@ -57,39 +57,41 @@ class BooksForm extends Component {
 
   render() {
     return (
-      <Box className="Component--BooksForm">
-        <Form>
-          <div className="input-group">
-            <Input
-              ref="title"
-              type="text"
-              value={this.state.title}
-              placeholder="Book title"
-              validate={e => {
-                if (e.target.value.trim() === '') {
-                  return 'Title is required'
-                }
-              }}
-              onChange={e => this.onInputChange(e.target.value, 'title')}
-            />
+      <Form className="Component--BooksForm">
+        <Box>
+          <div className="form-items">
+            <div className="input-group">
+              <Input
+                ref="title"
+                type="text"
+                value={this.state.title}
+                placeholder="Book title"
+                validate={e => {
+                  if (e.target.value.trim() === '') {
+                    return 'Title is required'
+                  }
+                }}
+                onChange={e => this.onInputChange(e.target.value, 'title')}
+              />
+            </div>
+
+            <div className="input-group">
+              <Input
+                ref="description"
+                type="text"
+                value={this.state.description}
+                placeholder="Short description"
+                validate={e => {
+                  if (e.target.value.trim() === '') {
+                    return 'Description is required'
+                  }
+                }}
+                onChange={e => this.onInputChange(e.target.value, 'description')}
+              />
+            </div>
           </div>
 
-          <div className="input-group">
-            <Input
-              ref="description"
-              type="text"
-              value={this.state.description}
-              placeholder="Short description"
-              validate={e => {
-                if (e.target.value.trim() === '') {
-                  return 'Description is required'
-                }
-              }}
-              onChange={e => this.onInputChange(e.target.value, 'description')}
-            />
-          </div>
-
-          <div className="buttons-container">
+          <div className="form-controls">
             <Button
               onClick={this.onSubmit.bind(this)}
               disabled={
@@ -101,8 +103,8 @@ class BooksForm extends Component {
               Submit
             </Button>
           </div>
-        </Form>
-      </Box>
+        </Box>
+      </Form>
     )
   }
 }

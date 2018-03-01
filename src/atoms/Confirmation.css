@@ -35,11 +35,12 @@
 
 .Atom--Confirmation .wrapper .container .content {
   width: 100%;
-  padding: 1em;
+  padding: 2em 1em;
   border-bottom: 1px solid #eee;
 }
 
 .Atom--Confirmation .wrapper .controls {
+  background: #f9f9f9;
   width: 100%;
   display: flex;
   justify-content: space-between;

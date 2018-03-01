@@ -1,17 +1,27 @@
-.Component--Form {
+.Atom--Form {
   display: flex;
   flex-direction: column;
   border-radius: 2px;
-  padding: 2em 1.5em 1.5em 1.5em;
 }
 
-.Component--Form .input-group {
+.Atom--Form .input-group {
   margin-bottom: 1rem;
 }
 
-.Component--Form .buttons-container {
+.Atom--Form .input-group:last-child {
+  margin-bottom: 0;
+}
+
+.Atom--Form .form-items {
+  padding: 1em;
+}
+
+.Atom--Form .form-controls {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
   justify-content: space-between;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  padding: 1em;
 }

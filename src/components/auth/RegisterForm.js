@@ -51,59 +51,61 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <Box className="Component--RegisterForm">
-        <Form>
-          <div className="input-group">
-            <Input
-              ref="username"
-              type="text"
-              value={this.state.username}
-              onChange={e => this.onInputChange(e.target.value, 'username')}
-              placeholder="Username"
-              validate={e => {
-                return e.target.value.trim() === '' ? 'Invalid username' : null
-              }}
-            />
+      <Form className="Component--RegisterForm">
+        <Box>
+          <div className="form-items">
+            <div className="input-group">
+              <Input
+                ref="username"
+                type="text"
+                value={this.state.username}
+                onChange={e => this.onInputChange(e.target.value, 'username')}
+                placeholder="Username"
+                validate={e => {
+                  return e.target.value.trim() === '' ? 'Invalid username' : null
+                }}
+              />
+            </div>
+
+            <div className="input-group">
+              <Input
+                ref="email"
+                type="email"
+                value={this.state.email}
+                onChange={e => this.onInputChange(e.target.value, 'email')}
+                placeholder="Email"
+              />
+            </div>
+
+            <div className="input-group">
+              <Input
+                ref="emailAgain"
+                type="email"
+                onChange={e => this.onInputChange(e.target.value, 'emailAgain')}
+                validate={e => {
+                  if (e.target.value !== this.state.email) {
+                    return `The email address doesn't match`
+                  }
+                }}
+                placeholder="Repeat Email"
+              />
+            </div>
+
+            <div className="input-group">
+              <Input
+                ref="password"
+                type="password"
+                value={this.state.password}
+                onChange={e => this.onInputChange(e.target.value, 'password')}
+                placeholder="Password"
+                validate={e => {
+                  return e.target.value.trim() === '' ? 'Invalid password' : null
+                }}
+              />
+            </div>
           </div>
 
-          <div className="input-group">
-            <Input
-              ref="email"
-              type="email"
-              value={this.state.email}
-              onChange={e => this.onInputChange(e.target.value, 'email')}
-              placeholder="Email"
-            />
-          </div>
-
-          <div className="input-group">
-            <Input
-              ref="emailAgain"
-              type="email"
-              onChange={e => this.onInputChange(e.target.value, 'emailAgain')}
-              validate={e => {
-                if (e.target.value !== this.state.email) {
-                  return `The email address doesn't match`
-                }
-              }}
-              placeholder="Repeat Email"
-            />
-          </div>
-
-          <div className="input-group">
-            <Input
-              ref="password"
-              type="password"
-              value={this.state.password}
-              onChange={e => this.onInputChange(e.target.value, 'password')}
-              placeholder="Password"
-              validate={e => {
-                return e.target.value.trim() === '' ? 'Invalid password' : null
-              }}
-            />
-          </div>
-
-          <div className="buttons-container">
+          <div className="form-controls">
             <Button
               onClick={() => this.props.onSubmit({
                 username: this.state.username,
@@ -125,8 +127,8 @@ class RegisterForm extends Component {
               <Link to="/login">login</Link>
             </div>
           </div>
-        </Form>
-      </Box>
+        </Box>
+      </Form>
     )
   }
 }

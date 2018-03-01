@@ -41,33 +41,35 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Box className="Component--LoginForm">
-        <Form>
-          <div className="input-group">
-            <Input
-              ref="username"
-              type="text"
-              placeholder="Username"
-              onChange={e => this.onInputChange(e.target.value, 'username')}
-              validate={e => {
-                return e.target.value === '' ? 'Invalid username' : null
-              }}
-            />
+      <Form className="Component--LoginForm">
+        <Box>
+          <div className="form-items">
+            <div className="input-group">
+              <Input
+                ref="username"
+                type="text"
+                placeholder="Username"
+                onChange={e => this.onInputChange(e.target.value, 'username')}
+                validate={e => {
+                  return e.target.value === '' ? 'Invalid username' : null
+                }}
+              />
+            </div>
+
+            <div className="input-group">
+              <Input
+                ref="password"
+                type="password"
+                placeholder="Password"
+                onChange={e => this.onInputChange(e.target.value, 'password')}
+                validate={e => {
+                  return e.target.value === '' ? 'Invalid password' : null
+                }}
+              />
+            </div>
           </div>
 
-          <div className="input-group">
-            <Input
-              ref="password"
-              type="password"
-              placeholder="Password"
-              onChange={e => this.onInputChange(e.target.value, 'password')}
-              validate={e => {
-                return e.target.value === '' ? 'Invalid password' : null
-              }}
-            />
-          </div>
-
-          <div className="buttons-container">
+          <div className="form-controls">
             <Button
               type="button"
               onClick={() => this.props.onSubmit({
@@ -82,10 +84,10 @@ class LoginForm extends Component {
             >
               Login
             </Button>
-            <p><Link to="/register">register</Link></p>
+            <Link to="/register">register</Link>
           </div>
-        </Form>
-      </Box>
+        </Box>
+      </Form>
     )
   }
 }
