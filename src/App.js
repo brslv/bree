@@ -20,6 +20,7 @@ import LoginPage from './pages/Login'
 import BooksListPage from './pages/books/List'
 import BooksAddPage from './pages/books/Add'
 import BooksEditPage from './pages/books/Edit'
+import BooksWritePage from './pages/books/Write'
 import { logout } from './actionCreators/user'
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
               <PrivateRoute exact path="/books" user={this.props.user} component={BooksListPage} />
               <PrivateRoute exact path="/books/add" user={this.props.user} component={BooksAddPage} />
               <PrivateRoute exact path="/books/:id/edit" user={this.props.user} component={BooksEditPage} />
+              <PrivateRoute exact path="/books/:id/write" user={this.props.user} component={BooksWritePage} />
 
               <NotificationsDrawer notifications={this.props.notifications} />
               {this.props.isLoading ? <Loader /> : null}

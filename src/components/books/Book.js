@@ -46,7 +46,9 @@ class Book extends Component {
             <Link to={`/books/${id}/edit/`}>
               <Button className="small stroke-only">Edit</Button>
             </Link> &nbsp;
-            <Button className="small">Write</Button>
+            <Link to={`/books/${id}/write`}>
+              <Button className="small">Write</Button>
+            </Link>
           </div>
         </div>
       </Card>
