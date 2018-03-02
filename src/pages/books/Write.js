@@ -21,15 +21,18 @@ class Write extends Component {
   }
 
   render() {
-    console.warn(this.props.bookToWrite)
+    const bookToWrite = this.props.bookToWrite
+
     return (
-      <PageContainer title={`Write {book.title}`}>
+      <PageContainer title="Write">
         {
-          this.props.bookToWrite !== null
+          Array.isArray(bookToWrite) && bookToWrite.length
           ? <div className="Page--BooksWrite">
-              Write... {this.props.bookToWrite.title}
+              Write... {this.props.bookToWrite[0].title}
             </div>
-          : this.renderEmptyPageMessage()
+          : Array.isArray(bookToWrite) && !bookToWrite.length
+            ? this.renderEmptyPageMessage()
+            : null
         }
       </PageContainer>
     )

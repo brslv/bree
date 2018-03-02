@@ -13,8 +13,8 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: #000;
-  opacity: 0.6;
+  background: #fff;
+  opacity: 0.5;
 }
 
 .Atom--Loader .container {
@@ -32,7 +32,7 @@
 .Atom--Loader .container .loader {
   width: 30px;
   height: 30px;
-  border: 2px solid #Fff;
+  border: 2px solid #222a40;
   border-radius: 5px;
   animation: loader 2s infinite ease-out;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
@@ -42,7 +42,7 @@
   vertical-align: top;
   display: inline-block;
   width: 100%;
-  background-color: #fff;
+  background-color: #222a40;
   animation: loader-inner 2s infinite ease-in;
 }
 

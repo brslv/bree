@@ -35,7 +35,7 @@ const requestBook = (id, user) => {
     dispatch(stopLoading())
     dispatch({
       type: RECEIVE_BOOK_TO_EDIT,
-      payload: book[0] || null
+      payload: book || []
     })
   }
 }

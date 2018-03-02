@@ -15,7 +15,7 @@ class Edit extends Component {
   }
 
   onSubmit(user, book) {
-    book = { ...book, id: this.props.bookToEdit._id }
+    book = { ...book, id: this.props.bookToEdit[0]._id }
     this.props.editBook(book, this.props.history, user)
   }
 
@@ -30,17 +30,20 @@ class Edit extends Component {
   }
 
   render() {
+    const bookToEdit = this.props.bookToEdit
     return (
-      <PageContainer title={`Edit book`} className="Page--Books-add">
+      <PageContainer title="Edit" className="Page--Books-add">
         {
-          this.props.bookToEdit !== null
+          Array.isArray(bookToEdit) && bookToEdit.length
           ? <BooksForm
             user={this.props.user}
             onSubmit={this.onSubmit.bind(this)}
             history={this.props.history}
-            book={this.props.bookToEdit}
+            book={bookToEdit[0]}
           />
-        : this.renderEmptyPageMessage()
+        : Array.isArray(bookToEdit) && !bookToEdit.length
+          ? this.renderEmptyPageMessage()
+          : null
         }
       </PageContainer>
     )

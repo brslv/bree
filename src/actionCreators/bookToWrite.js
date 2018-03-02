@@ -27,7 +27,7 @@ const requestBook = (id, user) => {
     dispatch(stopLoading())
     dispatch({
       type: RECEIVE_BOOK_TO_WRITE,
-      payload: book[0] || null
+      payload: book || []
     })
   }
 }
