@@ -1,0 +1,29 @@
+.Component--AddBox {
+  border-bottom: 0;
+}
+
+.Component--AddBox .Component--Card {
+  background: #f9f9f9;
+  padding: 1em;
+  min-height: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #ccc;
+  box-shadow: none;
+}
+
+.Component--AddBox .Component--Card h3 {
+  color: #ccc;
+  transition: all, 0.3s;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.3em;
+}
+
+.Component--AddBox .Component--Card:hover h3 {
+  transform: scale(1.1);
+}

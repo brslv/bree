@@ -48,9 +48,7 @@ class Navigation extends Component {
           ☰
         </div>
         <ul className="list" onClick={this.onNavigationItemsClick.bind(this)}>
-          <Link to="/"><li>Home</li></Link>
-          <Link to="/books"><li>List Books</li></Link>
-          <Link to="/books/add"><li>Add new book</li></Link>
+          <Link to="/books"><li>Books</li></Link>
         </ul>
         <div className="user-info">
           Logged in as: {this.props.username}
