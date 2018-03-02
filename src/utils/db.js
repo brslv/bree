@@ -64,8 +64,6 @@ const addBook = function (book, user) {
 const editBook = function (book, user) {
   const authHash = user.authToken
 
-  console.warn(book)
-
   return fetch(`${BASE_URL}/appdata/${APP_KEY}/books/${book.id}`, {
     'method': 'PUT',
     'body': JSON.stringify({

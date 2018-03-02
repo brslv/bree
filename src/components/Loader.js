@@ -14,7 +14,7 @@ class Loader extends Component {
     return (
       <div className="Component--Loader">
         <div className="container">
-          <span class="loader"><span class="loader-inner"></span></span>
+          <span className="loader"><span className="loader-inner"></span></span>
         </div>
         <div className="overlay"></div>
       </div>

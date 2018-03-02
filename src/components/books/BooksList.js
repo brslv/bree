@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Book from './Book'
 import AddBox from './AddBox'
-import Button from '../../atoms/Button'
 import './BooksList.css'
 
 class BooksList extends Component {
