@@ -1,10 +1,10 @@
 import React from 'react'
 import './Notification.css'
 
-const Notification = ({ content }) => {
+const Notification = (props) => {
   return (
-    <div className="Component--Notification accent">
-      <span>{content}</span>
+    <div className={['Component--Notification', props.className].join(' ')}>
+      <span>{props.content}</span>
     </div>
   )
 }

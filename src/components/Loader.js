@@ -13,7 +13,9 @@ class Loader extends Component {
   render() {
     return (
       <div className="Component--Loader">
-        <h1 className="loader-text">Loading...</h1>
+        <div className="container">
+          <span class="loader"><span class="loader-inner"></span></span>
+        </div>
         <div className="overlay"></div>
       </div>
     )

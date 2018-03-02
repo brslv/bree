@@ -7,7 +7,7 @@ class NotificationsDrawer extends Component {
     return (
       <div className="Component--NotificationsDrawer">
         {this.props.notifications.map((notification, index) => (
-            <Notification key={index} content={notification.content} />
+            <Notification className="accent" key={index} content={notification.content} />
         ))}
       </div>
     )

@@ -17,7 +17,7 @@
   opacity: 0.6;
 }
 
-.Component--Loader .loader-text {
+.Component--Loader .container {
   display: flex;
   z-index: 2;
   position: absolute;
@@ -27,4 +27,65 @@
   align-items: center;
   justify-content: center;
   color: #fff;
+}
+
+.Component--Loader .container .loader {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #Fff;
+  border-radius: 5px;
+  animation: loader 2s infinite ease-out;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.Component--Loader .container .loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
 }
