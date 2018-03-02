@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PageContainer from '../../components/PageContainer'
 import BooksForm from '../../components/books/BooksForm'
+import EmptyPageMessage from '../../atoms/EmptyPageMessage'
 import {
   requestBook,
   editBook
@@ -18,19 +19,29 @@ class Edit extends Component {
     this.props.editBook(book, this.props.history, user)
   }
 
-  render() {
-    if (!this.props.bookToEdit) {
-      return null
-    }
-
+  renderEmptyPageMessage() {
     return (
-      <PageContainer title={`Edit book "${this.props.bookToEdit.title}"`} className="Page--Books-add">
-        <BooksForm
-          user={this.props.user}
-          onSubmit={this.onSubmit.bind(this)}
-          history={this.props.history}
-          book={this.props.bookToEdit}
-        />
+      <EmptyPageMessage>
+        <h2 style={{ textAlign: 'center' }}>
+          The book doesn't exist. <span role="img" aria-label="Sad face">😔</span>
+        </h2>
+      </EmptyPageMessage>
+    )
+  }
+
+  render() {
+    return (
+      <PageContainer title={`Edit book`} className="Page--Books-add">
+        {
+          this.props.bookToEdit !== null
+          ? <BooksForm
+            user={this.props.user}
+            onSubmit={this.onSubmit.bind(this)}
+            history={this.props.history}
+            book={this.props.bookToEdit}
+          />
+        : this.renderEmptyPageMessage()
+        }
       </PageContainer>
     )
   }
