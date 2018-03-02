@@ -1,4 +1,4 @@
-.Component--Loader {
+.Atom--Loader {
   align-items: center;
   justify-content: center;
   display: flex;
@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.Component--Loader .overlay {
+.Atom--Loader .overlay {
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -17,7 +17,7 @@
   opacity: 0.6;
 }
 
-.Component--Loader .container {
+.Atom--Loader .container {
   display: flex;
   z-index: 2;
   position: absolute;
@@ -29,7 +29,7 @@
   color: #fff;
 }
 
-.Component--Loader .container .loader {
+.Atom--Loader .container .loader {
   width: 30px;
   height: 30px;
   border: 2px solid #Fff;
@@ -38,7 +38,7 @@
   box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
 }
 
-.Component--Loader .container .loader-inner {
+.Atom--Loader .container .loader-inner {
   vertical-align: top;
   display: inline-block;
   width: 100%;

@@ -12,7 +12,7 @@ class Loader extends Component {
 
   render() {
     return (
-      <div className="Component--Loader">
+      <div className="Atom--Loader">
         <div className="container">
           <span className="loader"><span className="loader-inner"></span></span>
         </div>
