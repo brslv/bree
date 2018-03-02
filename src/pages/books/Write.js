@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PageContainer from '../../components/PageContainer'
 import EmptyPageMessage from '../../atoms/EmptyPageMessage'
 import { requestBook } from '../../actionCreators/bookToWrite'
+import WriteContainer from '../../components/books/WriteContainer'
 import './Write.css'
 
 class Write extends Component {
@@ -28,7 +29,7 @@ class Write extends Component {
         {
           Array.isArray(bookToWrite) && bookToWrite.length
           ? <div className="Page--BooksWrite">
-              Write... {this.props.bookToWrite[0].title}
+              <WriteContainer book={bookToWrite[0]} />
             </div>
           : Array.isArray(bookToWrite) && !bookToWrite.length
             ? this.renderEmptyPageMessage()
