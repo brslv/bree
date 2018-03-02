@@ -2,12 +2,15 @@ import {
   REQUEST_BOOKS,
   RECEIVE_BOOKS,
   BOOK_ADDED,
-  BOOK_DELETED
+  BOOK_DELETED,
+  CLEAR_BOOKS
 } from '../actions/books'
 
-export default (state = null, action) => {
+const defaultState = null
+
+export default (state = defaultState, action) => {
   switch (action.type) {
-    case REQUEST_BOOKS: return null
+    case REQUEST_BOOKS: return defaultState
     case RECEIVE_BOOKS: return action.payload.books.reverse()
     case BOOK_ADDED: return [...(state || []), action.payload]
     case BOOK_DELETED: {
@@ -17,6 +20,7 @@ export default (state = null, action) => {
 
       return state
     }
+    case CLEAR_BOOKS: return defaultState
     default: return state
   }
 }

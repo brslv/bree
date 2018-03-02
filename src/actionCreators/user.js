@@ -20,6 +20,7 @@ import {
   successfullRegistration,
   userAlreadyExists
 } from '../notifications'
+import { clearBooks } from './books'
 
 const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }
@@ -113,6 +114,7 @@ const logout = () => {
           // user logged out
           localStorage.removeItem(userDataStoreKey)
 
+          dispatch(clearBooks())
           dispatch({ type: LOGOUT_END })
           dispatch(stopLoading())
         }

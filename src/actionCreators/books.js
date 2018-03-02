@@ -2,7 +2,8 @@ import {
   REQUEST_BOOKS,
   RECEIVE_BOOKS,
   BOOK_ADDED,
-  BOOK_DELETED
+  BOOK_DELETED,
+  CLEAR_BOOKS
 } from '../actions/books'
 import {
   getAllBooks,
@@ -93,8 +94,11 @@ const deleteBook = (id, user) => {
   }
 }
 
+const clearBooks = () => ({ type: CLEAR_BOOKS })
+
 export {
   requestBooks,
   addBook,
-  deleteBook
+  deleteBook,
+  clearBooks
 }
