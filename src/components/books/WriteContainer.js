@@ -6,10 +6,6 @@ class WriteContainer extends Component {
     this.simpleMDE = new window.SimpleMDE({ element: document.querySelector('.test') })
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
-
   render() {
     return (
       <div className="Component--WriteContainer">
