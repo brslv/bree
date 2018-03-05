@@ -1,4 +1,14 @@
 .Component--WriteContainer {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+}
+
+@media only screen and (min-width: 768px) {
+  .Component--WriteContainer {
+    grid-template-columns: 1fr 4fr;
+    grid-column-gap: 1em;
+  }
+}
+
+.Component--WriteContainer .left h2 {
+  margin-top: 0;
 }

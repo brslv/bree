@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './WriteContainer.css'
 
 class WriteContainer extends Component {
@@ -10,7 +11,12 @@ class WriteContainer extends Component {
     return (
       <div className="Component--WriteContainer">
         <div className="left">
-          Chapters
+          <h2>Chapters</h2>
+          <ol className="chapters-list">
+            <li className="chapter"><Link to="/">Chapter 1 - Intro</Link></li>
+            <li className="chapter"><Link to="/">Chapter 1 - Something</Link></li>
+            <li className="chapter"><Link to="/">Chapter 1 - Something more!</Link></li>
+          </ol>
         </div>
 
         <div className="right">
