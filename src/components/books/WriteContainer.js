@@ -4,7 +4,7 @@ import './WriteContainer.css'
 
 class WriteContainer extends Component {
   componentDidMount() {
-    this.simpleMDE = new window.SimpleMDE({ element: document.querySelector('.test') })
+    this.simpleMDE = new window.SimpleMDE({ element: document.querySelector('.chapter-content-editor') })
   }
 
   render() {
@@ -20,7 +20,7 @@ class WriteContainer extends Component {
         </div>
 
         <div className="right">
-          <textarea className="test" ref="textarea" />
+          <textarea className="chapter-content-editor" ref="textarea" />
         </div>
       </div>
     )
