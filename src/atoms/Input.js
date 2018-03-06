@@ -69,6 +69,7 @@ class Input extends Component {
       <React.Fragment>
         <input
           {...inputProps}
+          ref="el"
           value={this.state.value}
           onChange={this.onChange.bind(this)}
           onBlur={this.onBlur.bind(this)}
