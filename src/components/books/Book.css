@@ -1,3 +1,7 @@
+.Component--Book {
+  min-height: 350px;
+}
+
 .Component--Book .header {
   display: flex;
   flex-direction: row;
