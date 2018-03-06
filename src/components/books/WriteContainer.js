@@ -27,6 +27,10 @@ class WriteContainer extends Component {
     }
   }
 
+  addChapterButtonClick(e) {
+    console.warn('add chapter button - click')
+  }
+
   componentDidMount() {
     document.addEventListener('click', this.handleOutsideClick)
     this.simpleMDE = new window.SimpleMDE({ element: document.querySelector('.chapter-content-editor') })
@@ -70,6 +74,10 @@ class WriteContainer extends Component {
                   <Button className="small stroke-only">Edit</Button>
                   <Button className="small">Write</Button>
                 </div>
+              </div>
+
+              <div className="add-button-wrapper">
+                <Button className="add-button small" onClick={this.addChapterButtonClick.bind(this)}>Add</Button>
               </div>
             </div>
           </Card>

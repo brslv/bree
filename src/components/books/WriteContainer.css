@@ -34,6 +34,16 @@
   color: #fff;
 }
 
+.Component--WriteContainer .chapters-list .add-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Component--WriteContainer .chapters-list .add-button {
+  margin: 1em;
+  float: right;
+}
+
 .Component--WriteContainer .chapters-list .chapter {
   display: flex;
   flex-direction: row;
@@ -45,11 +55,6 @@
 
 .Component--WriteContainer .chapters-list .chapter.active .title {
   text-decoration: underline;
-}
-
-.Component--WriteContainer .chapters-list .chapter:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
 }
 
 .Component--WriteContainer .chapters-list .chapter .title {
