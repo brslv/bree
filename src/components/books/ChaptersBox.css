@@ -81,6 +81,7 @@
 }
 
 .Component--ChaptersBox .chapters-list .chapter .controls .delete-chapter {
+  color: #ccc;
   user-select: none;
   cursor: pointer;
 }

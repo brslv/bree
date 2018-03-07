@@ -48,7 +48,7 @@ class AddChapterForm extends Component {
               ref="title"
               type="text"
               onChange={e => this.onInputChange(e.target.value, 'title')}
-              validate={e => e.target.value === '' ? "Title canno't be empty" : null}
+              validate={e => e.target.value === '' ? "Title cannot be empty" : null}
               placeholder="Chapter title"
             />
           </div>

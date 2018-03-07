@@ -65,14 +65,22 @@ class Input extends Component {
       delete inputProps['validate']
     }
 
+    if (inputProps.skipOnBlurValidation) {
+      delete inputProps['skipOnBlurValidation']
+    }
+
+    if (inputProps.skipOnChangeValidation) {
+      delete inputProps['skipOnChangeValidation']
+    }
+
     return (
       <React.Fragment>
         <input
           {...inputProps}
           ref="el"
           value={this.state.value}
-          onChange={this.onChange.bind(this)}
-          onBlur={this.onBlur.bind(this)}
+          onChange={(е) => !this.props.skipOnChangeValidation && this.onChange(е)}
+          onBlur={(е) => !this.props.skipOnBlurValidation && this.onBlur(е)}
           className={classNames}
         />
         {this.state.error ? <InputError content={this.state.error} /> : ''}
