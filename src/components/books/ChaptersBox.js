@@ -28,8 +28,8 @@ class ChaptersBox extends Component {
 
   addChapterButtonClick(e) {
     this.setState({ chaptersListIsHidden: true }, () => {
-      if (this.props.onAdd) {
-        this.props.onAdd(e)
+      if (this.props.onAddButtonClick) {
+        this.props.onAddButtonClick(e)
       }
     })
   }

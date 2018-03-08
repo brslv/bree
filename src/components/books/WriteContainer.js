@@ -41,7 +41,7 @@ class WriteContainer extends Component {
         <textarea className="chapter-content-editor" ref="textarea" />
 
         <ChaptersBox
-          onAdd={this.openModal.bind(this)}
+          onAddButtonClick={this.openModal.bind(this)}
         />
 
         {this.state.addChapterModalIsHidden ? null : this.renderAddChapterModal()}
