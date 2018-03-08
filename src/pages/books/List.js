@@ -4,6 +4,11 @@ import { withRouter } from 'react-router-dom'
 import BooksList from '../../components/books/BooksList'
 import { requestBooks } from '../../actionCreators/books'
 import PageContainer from '../../components/PageContainer'
+import {
+  setConfirmation,
+  unsetConfirmation
+} from '../../actionCreators/confirmation'
+import { deleteBook } from '../../actionCreators/books'
 import './List.css'
 
 class List extends Component {
@@ -11,10 +16,25 @@ class List extends Component {
     this.props.requestBooks()
   }
 
+  onBookDelete(e, id) {
+    this.props.setConfirmation('Are you sure you want to delete this book, braw?', (e, { confirmed }) => {
+      if (confirmed) {
+        this.props.deleteBook(id)
+      } else {
+        // canceled...
+      }
+
+      this.props.unsetConfirmation()
+    })
+  }
+
   render() {
     return (
       <PageContainer title="Books list" className="Page--Books-list">
-        <BooksList user={this.props.user} books={this.props.books} />
+        <BooksList
+          books={this.props.books}
+          onBookDelete={this.onBookDelete.bind(this)}
+        />
       </PageContainer>
     );
   }
@@ -30,6 +50,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     requestBooks: () => {
       dispatch(requestBooks(ownProps.user))
+    },
+    setConfirmation: (text, onConfirm) => {
+      dispatch(setConfirmation(text, onConfirm))
+    },
+    unsetConfirmation: () => {
+      dispatch(unsetConfirmation())
+    },
+    deleteBook: (id) => {
+      dispatch(deleteBook(id, ownProps.user))
     }
   }
 }

@@ -1,29 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import Card from '../../atoms/Card'
 import Button from '../../atoms/Button'
 import Badge from '../../atoms/Badge'
 import { Link } from 'react-router-dom'
-import {
-  setConfirmation,
-  unsetConfirmation
-} from '../../actionCreators/confirmation'
-import { deleteBook } from '../../actionCreators/books'
 import './Book.css'
 
 class Book extends Component {
-  onDelete(e, id) {
-    this.props.setConfirmation('Are you sure you want to delete this book, braw?', (e, { confirmed }) => {
-      if (confirmed) {
-        this.props.deleteBook(id)
-      } else {
-        // canceled...
-      }
-
-      this.props.unsetConfirmation()
-    })
-  }
-
   render() {
     const {
       id,
@@ -35,7 +17,7 @@ class Book extends Component {
       <Card className="Component--Book">
         <div className="header">
           <h3 className="title">{title}</h3>
-          <span className="delete-button" onClick={e => this.onDelete(e, id)}>&times;</span>
+          <span className="delete-button" onClick={e => this.props.onDelete(e, id)}>&times;</span>
         </div>
         <div className="content">{description}</div>
         <div className="footer">
@@ -56,23 +38,4 @@ class Book extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    setConfirmation: (text, onConfirm) => {
-      dispatch(setConfirmation(text, onConfirm))
-    },
-    unsetConfirmation: () => {
-      dispatch(unsetConfirmation())
-    },
-    deleteBook: (id) => {
-      dispatch(deleteBook(id, ownProps.user))
-    }
-  }
-}
-
-const connected = connect(
-  null,
-  mapDispatchToProps
-)(Book)
-
-export default connected
+export default Book

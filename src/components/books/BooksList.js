@@ -12,6 +12,7 @@ class BooksList extends Component {
         title={book.title}
         description={book.description}
         user={this.props.user}
+        onDelete={this.props.onBookDelete}
       />
     })
   }
