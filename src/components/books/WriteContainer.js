@@ -24,6 +24,11 @@ class WriteContainer extends Component {
     this.simpleMDE = new window.SimpleMDE({ element: document.querySelector('.chapter-content-editor') })
   }
 
+  onDeleteChapter(e, id) {
+    this.props.onDeleteChapter(id)
+    console.warn(`deleting chapter ${id}`)
+  }
+
   renderAddChapterModal() {
     return (
       <Modal
@@ -36,10 +41,6 @@ class WriteContainer extends Component {
         }} />
       </Modal>
     )
-  }
-
-  onDeleteChapter(e, id) {
-    console.warn(`deleting chapter ${id}`)
   }
 
   render() {

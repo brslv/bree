@@ -10,7 +10,9 @@ export default (state = [], action) => {
     case REQUEST_CHAPTERS: return []
     case RECEIVE_CHAPTERS: return action.payload.chapters.reverse()
     case CHAPTER_ADDED: return [action.payload, ...state]
-    case CHAPTER_DELETED: return state.filter(chapter => chapter.id !== action.payload).reverse()
+    case CHAPTER_DELETED: {
+      return state.filter(chapter => chapter._id !== action.payload)
+    }
     default: return state
   }
 }

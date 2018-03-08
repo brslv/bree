@@ -1,12 +1,14 @@
 import {
   REQUEST_CHAPTERS,
   RECEIVE_CHAPTERS,
-  CHAPTER_ADDED
+  CHAPTER_ADDED,
+  CHAPTER_DELETED
 } from '../actions/chapters'
 import { startLoading, stopLoading } from './isLoading';
 import {
   getChapters,
-  addChapter as addNewChapter
+  addChapter as addNewChapter,
+  deleteChapter as deleteExistingChapter
 } from '../utils/db'
 
 const requestChapters = (bookId, user) => {
@@ -55,8 +57,25 @@ const addChapter = ({title, content = ''}, bookId, user) => {
   }
 }
 
-const deleteChapter = (id) => {
-  // TODO
+const deleteChapter = (id, user) => {
+  return async (dispatch) => {
+    dispatch(startLoading())
+
+    const response = await deleteExistingChapter(id, user)
+
+    if (response.status !== 200 || !response.ok) {
+      dispatch(stopLoading())
+      // dispatch(addNotification(bookDeleteFail()))
+      return
+    }
+
+    dispatch(stopLoading())
+    dispatch({
+      type: CHAPTER_DELETED,
+      payload: id
+    })
+    // dispatch(addNotification(bookDeleteSuccess()))
+  }
 }
 
 export {

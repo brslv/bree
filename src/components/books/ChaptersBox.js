@@ -75,7 +75,7 @@ class ChaptersBox extends Component {
           <Card className={`chapters-list ${this.state.chaptersListIsHidden ? 'hidden' : ''}`}>
             <div ref="chaptersList">
               {this.props.chapters.map((chapter, index) => {
-                return this.renderChapter(chapter, index)
+                return this.renderChapter(chapter, chapter._id)
               })}
 
               <div className="add-button-wrapper">

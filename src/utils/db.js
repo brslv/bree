@@ -122,6 +122,18 @@ const addChapter = function (chapter, bookId, user) {
   })
 }
 
+const deleteChapter = function (id, user) {
+  const authHash = user.authToken
+
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/chapters/${id}`, {
+    'method': 'DELETE',
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json',
+    }
+  })
+}
+
 /* users */
 function register(username, email, password) {
   return fetch(`${BASE_URL}/user/${APP_KEY}`, {
@@ -175,6 +187,7 @@ export {
   /* chapters */
   getChapters,
   addChapter,
+  deleteChapter,
 
   /* users */
   register,

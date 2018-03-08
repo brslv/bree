@@ -7,7 +7,8 @@ import WriteContainer from '../../components/books/WriteContainer'
 import './Write.css'
 import {
   requestChapters,
-  addChapter
+  addChapter,
+  deleteChapter
 } from '../../actionCreators/chapters';
 
 class Write extends Component {
@@ -39,6 +40,7 @@ class Write extends Component {
                 book={bookToWrite[0]}
                 chapters={chapters}
                 onAddChapter={this.props.addChapter}
+                onDeleteChapter={this.props.deleteChapter}
               />
             </div>
           : Array.isArray(bookToWrite) && !bookToWrite.length
@@ -61,7 +63,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getBookToWrite: () => dispatch(requestBook(ownProps.match.params.id, ownProps.user)),
     getChapters: () => dispatch(requestChapters(ownProps.match.params.id, ownProps.user)),
-    addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user))
+    addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user)),
+    deleteChapter: (id) => dispatch(deleteChapter(id, ownProps.user))
   }
 }
 
