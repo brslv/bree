@@ -11,8 +11,8 @@ import {
   deleteChapter
 } from '../../actionCreators/chapters';
 import {
-  setConfirmation as _setConfirmation,
-  unsetConfirmation as _unsetConfirmation
+  setConfirmation,
+  unsetConfirmation
 } from '../../actionCreators/confirmation';
 
 class Write extends Component {
@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     getChapters: () => dispatch(requestChapters(ownProps.match.params.id, ownProps.user)),
     addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user)),
     deleteChapter: (id) => dispatch(deleteChapter(id, ownProps.user)),
-    setConfirmation: (text, onConfirm) => dispatch(_setConfirmation(text, onConfirm)),
-    unsetConfirmation: () => dispatch(_unsetConfirmation())
+    setConfirmation: (text, onConfirm) => dispatch(setConfirmation(text, onConfirm)),
+    unsetConfirmation: () => dispatch(unsetConfirmation())
   }
 }
 

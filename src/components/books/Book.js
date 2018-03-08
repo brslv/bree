@@ -5,10 +5,10 @@ import Button from '../../atoms/Button'
 import Badge from '../../atoms/Badge'
 import { Link } from 'react-router-dom'
 import {
-  setConfirmation as _setConfirmation,
-  unsetConfirmation as _unsetConfirmation
+  setConfirmation,
+  unsetConfirmation
 } from '../../actionCreators/confirmation'
-import {deleteBook as _deleteBook } from '../../actionCreators/books'
+import { deleteBook } from '../../actionCreators/books'
 import './Book.css'
 
 class Book extends Component {
@@ -59,13 +59,13 @@ class Book extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     setConfirmation: (text, onConfirm) => {
-      dispatch(_setConfirmation(text, onConfirm))
+      dispatch(setConfirmation(text, onConfirm))
     },
     unsetConfirmation: () => {
-      dispatch(_unsetConfirmation())
+      dispatch(unsetConfirmation())
     },
     deleteBook: (id) => {
-      dispatch(_deleteBook(id, ownProps.user))
+      dispatch(deleteBook(id, ownProps.user))
     }
   }
 }
