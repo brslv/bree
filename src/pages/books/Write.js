@@ -10,6 +10,10 @@ import {
   addChapter,
   deleteChapter
 } from '../../actionCreators/chapters';
+import {
+  setConfirmation as _setConfirmation,
+  unsetConfirmation as _unsetConfirmation
+} from '../../actionCreators/confirmation';
 
 class Write extends Component {
   componentDidMount() {
@@ -27,6 +31,16 @@ class Write extends Component {
     )
   }
 
+  onDeleteChapter(id) {
+    this.props.setConfirmation(`You are going to delete a book chapter. This cannot be undone. Are you completely sure?`, (e, { confirmed }) => {
+      if (confirmed) {
+        this.props.deleteChapter(id)
+      }
+
+      this.props.unsetConfirmation()
+    })
+  }
+
   render() {
     const bookToWrite = this.props.bookToWrite
     const chapters = this.props.chapters
@@ -40,7 +54,7 @@ class Write extends Component {
                 book={bookToWrite[0]}
                 chapters={chapters}
                 onAddChapter={this.props.addChapter}
-                onDeleteChapter={this.props.deleteChapter}
+                onDeleteChapter={this.onDeleteChapter.bind(this)}
               />
             </div>
           : Array.isArray(bookToWrite) && !bookToWrite.length
@@ -64,7 +78,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     getBookToWrite: () => dispatch(requestBook(ownProps.match.params.id, ownProps.user)),
     getChapters: () => dispatch(requestChapters(ownProps.match.params.id, ownProps.user)),
     addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user)),
-    deleteChapter: (id) => dispatch(deleteChapter(id, ownProps.user))
+    deleteChapter: (id) => dispatch(deleteChapter(id, ownProps.user)),
+    setConfirmation: (text, onConfirm) => dispatch(_setConfirmation(text, onConfirm)),
+    unsetConfirmation: () => dispatch(_unsetConfirmation())
   }
 }
 

@@ -74,9 +74,7 @@ class ChaptersBox extends Component {
         <div className="chapters-context-menu">
           <Card className={`chapters-list ${this.state.chaptersListIsHidden ? 'hidden' : ''}`}>
             <div ref="chaptersList">
-              {this.props.chapters.map((chapter, index) => {
-                return this.renderChapter(chapter, chapter._id)
-              })}
+              {this.props.chapters.map(chapter => this.renderChapter(chapter, chapter._id))}
 
               <div className="add-button-wrapper">
                 <Button className="add-button small" onClick={this.addChapterButtonClick.bind(this)}>Add chapter</Button>

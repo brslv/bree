@@ -26,7 +26,6 @@ class WriteContainer extends Component {
 
   onDeleteChapter(e, id) {
     this.props.onDeleteChapter(id)
-    console.warn(`deleting chapter ${id}`)
   }
 
   renderAddChapterModal() {
