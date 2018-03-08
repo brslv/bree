@@ -10,6 +10,13 @@ import {
   addChapter as addNewChapter,
   deleteChapter as deleteExistingChapter
 } from '../utils/db'
+import { addNotification } from '../actionCreators/notifications'
+import {
+  chapterAddFail,
+  chapterAddSuccess,
+  chapterDeleteFail,
+  chapterDeleteSuccess
+} from '../notifications/'
 
 const requestChapters = (bookId, user) => {
   return async (dispatch) => {
@@ -42,7 +49,7 @@ const addChapter = ({title, content = ''}, bookId, user) => {
 
     if (response.status !== 201 || !response.ok) {
       dispatch(stopLoading())
-      // dispatch(addNotification(bookAddFail()))
+      dispatch(addNotification(chapterAddFail()))
       return
     }
 
@@ -53,7 +60,7 @@ const addChapter = ({title, content = ''}, bookId, user) => {
       type: CHAPTER_ADDED,
       payload: chapterData
     })
-    // dispatch(addNotification(bookAddSuccess()))
+    dispatch(addNotification(chapterAddSuccess()))
   }
 }
 
@@ -65,7 +72,7 @@ const deleteChapter = (id, user) => {
 
     if (response.status !== 200 || !response.ok) {
       dispatch(stopLoading())
-      // dispatch(addNotification(bookDeleteFail()))
+      dispatch(addNotification(chapterDeleteFail()))
       return
     }
 
@@ -74,7 +81,7 @@ const deleteChapter = (id, user) => {
       type: CHAPTER_DELETED,
       payload: id
     })
-    // dispatch(addNotification(bookDeleteSuccess()))
+    dispatch(addNotification(chapterDeleteSuccess()))
   }
 }
 

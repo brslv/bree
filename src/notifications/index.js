@@ -58,6 +58,30 @@ const bookDeleteSuccess = () => {
   }
 }
 
+const chapterAddFail = () => {
+  return {
+    content: `Couldn't save the chapter. Please, try again later.`
+  }
+}
+
+const chapterAddSuccess = () => {
+  return {
+    content: 'A new chapter has been added. 🎉'
+  }
+}
+
+const chapterDeleteFail = () => {
+  return {
+    content: `Couldn't delete the chapter. Please, try again later.`
+  }
+}
+
+const chapterDeleteSuccess = () => {
+  return {
+    content: 'The chapter has been deleted successfully. 🎉'
+  }
+}
+
 export {
   invalidCredentials,
   successfullRegistration,
@@ -68,5 +92,9 @@ export {
   bookEditSuccess,
   bookEditFail,
   bookDeleteSuccess,
-  bookDeleteFail
+  bookDeleteFail,
+  chapterAddSuccess,
+  chapterAddFail,
+  chapterDeleteSuccess,
+  chapterDeleteFail
 }
