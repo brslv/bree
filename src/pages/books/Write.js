@@ -5,10 +5,15 @@ import EmptyPageMessage from '../../atoms/EmptyPageMessage'
 import { requestBook } from '../../actionCreators/bookToWrite'
 import WriteContainer from '../../components/books/WriteContainer'
 import './Write.css'
+import {
+  requestChapters,
+  addChapter
+} from '../../actionCreators/chapters';
 
 class Write extends Component {
   componentDidMount() {
     this.props.getBookToWrite()
+    this.props.getChapters()
   }
 
   renderEmptyPageMessage() {
@@ -23,13 +28,18 @@ class Write extends Component {
 
   render() {
     const bookToWrite = this.props.bookToWrite
+    const chapters = this.props.chapters
 
     return (
       <PageContainer title="Write">
         {
           Array.isArray(bookToWrite) && bookToWrite.length
           ? <div className="Page--BooksWrite">
-              <WriteContainer book={bookToWrite[0]} />
+              <WriteContainer
+                book={bookToWrite[0]}
+                chapters={chapters}
+                onAddChapter={this.props.addChapter}
+              />
             </div>
           : Array.isArray(bookToWrite) && !bookToWrite.length
             ? this.renderEmptyPageMessage()
@@ -42,13 +52,16 @@ class Write extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    bookToWrite: state.bookToWrite
+    bookToWrite: state.bookToWrite,
+    chapters: state.chapters
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getBookToWrite: () => dispatch(requestBook(ownProps.match.params.id, ownProps.user)),
+    getChapters: () => dispatch(requestChapters(ownProps.match.params.id, ownProps.user)),
+    addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user))
   }
 }
 

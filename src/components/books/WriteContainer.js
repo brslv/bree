@@ -30,9 +30,16 @@ class WriteContainer extends Component {
         onEsc={this.closeModal.bind(this)}
         onClose={this.closeModal.bind(this)}
       >
-        <AddChapterForm />
+        <AddChapterForm onSubmit={(chapterData) => {
+          this.props.onAddChapter({ title: chapterData.title }, this.props.book._id)
+          this.closeModal()
+        }} />
       </Modal>
     )
+  }
+
+  onDeleteChapter(e, id) {
+    console.warn(`deleting chapter ${id}`)
   }
 
   render() {
@@ -41,7 +48,9 @@ class WriteContainer extends Component {
         <textarea className="chapter-content-editor" ref="textarea" />
 
         <ChaptersBox
+          chapters={this.props.chapters}
           onAddButtonClick={this.openModal.bind(this)}
+          onDeleteButtonClick={this.onDeleteChapter.bind(this)}
         />
 
         {this.state.addChapterModalIsHidden ? null : this.renderAddChapterModal()}

@@ -89,6 +89,39 @@ const deleteBook = function (id, user) {
   })
 }
 
+/* chapters */
+const getChapters = function (bookId, user) {
+  const authHash = user.authToken
+  const filters = JSON.stringify({
+    "bookId": bookId,
+    "_acl.creator": user.id
+  })
+
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/chapters/?query=${filters}`, {
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json'
+    }
+  })
+}
+
+const addChapter = function (chapter, bookId, user) {
+  const authHash = user.authToken
+
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/chapters`, {
+    'method': 'POST',
+    'body': JSON.stringify({
+      title: chapter.title,
+      content: chapter.content,
+      bookId
+    }),
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json',
+    }
+  })
+}
+
 /* users */
 function register(username, email, password) {
   return fetch(`${BASE_URL}/user/${APP_KEY}`, {
@@ -138,6 +171,10 @@ export {
   addBook,
   editBook,
   deleteBook,
+
+  /* chapters */
+  getChapters,
+  addChapter,
 
   /* users */
   register,

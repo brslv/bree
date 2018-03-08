@@ -34,6 +34,12 @@ class ChaptersBox extends Component {
     })
   }
 
+  deleteButtonClick(e, key) {
+    if (this.props.onDeleteButtonClick) {
+      this.props.onDeleteButtonClick(e, key)
+    }
+  }
+
   handleOutsideClick(e) {
     const chaptersListRef = this.refs.chaptersList
     const chaptesListButtonRef = this.refs.chaptersListButton
@@ -49,14 +55,14 @@ class ChaptersBox extends Component {
     }
   }
 
-  renderChapter(title) {
+  renderChapter(chapter, key) {
     return (
-      <div className="chapter">
-        <div className="title">{title}</div>
+      <div key={key} className="chapter">
+        <div className="title">{chapter.title}</div>
         <div className="controls">
           <Button className="small stroke-only">Edit</Button>
           <Button className="small">Write</Button>
-          <span className="delete-chapter">&times;</span>
+          <span className="delete-chapter" onClick={e => this.deleteButtonClick(e, key)}>&times;</span>
         </div>
       </div>
     )
@@ -68,11 +74,12 @@ class ChaptersBox extends Component {
         <div className="chapters-context-menu">
           <Card className={`chapters-list ${this.state.chaptersListIsHidden ? 'hidden' : ''}`}>
             <div ref="chaptersList">
-              {this.renderChapter('First chapter')}
-              {this.renderChapter('Second chapter')}
+              {this.props.chapters.map((chapter, index) => {
+                return this.renderChapter(chapter, index)
+              })}
 
               <div className="add-button-wrapper">
-                <Button className="add-button small" onClick={this.addChapterButtonClick.bind(this)}>Add</Button>
+                <Button className="add-button small" onClick={this.addChapterButtonClick.bind(this)}>Add chapter</Button>
               </div>
             </div>
           </Card>

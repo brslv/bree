@@ -57,6 +57,9 @@ class AddChapterForm extends Component {
         <div className="form-controls">
           <Button
             disabled={this.state.title === '' || this.state.hasErrors}
+            onClick={e => this.props.onSubmit({
+              title: this.state.title
+            })}
           >Submit</Button>
         </div>
       </Form>
