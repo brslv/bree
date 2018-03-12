@@ -3,7 +3,7 @@ import {
   RECEIVE_BOOK_TO_EDIT,
   BOOK_EDIT_START,
   BOOK_EDIT_END
-} from '../actions/bookToEdit'
+} from '../actions/currentlyEditing'
 import {
   getBook,
   editBook as editExistingBook

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PageContainer from '../../components/PageContainer'
 import EmptyPageMessage from '../../atoms/EmptyPageMessage'
-import { requestBook } from '../../actionCreators/bookToWrite'
+import { requestBook } from '../../actionCreators/currentlyWriting'
 import WriteContainer from '../../components/books/WriteContainer'
 import './Write.css'
 import {
@@ -17,7 +17,7 @@ import {
 
 class Write extends Component {
   componentDidMount() {
-    this.props.getBookToWrite()
+    this.props.getCurrentlyWritingBook()
     this.props.getChapters()
   }
 
@@ -42,22 +42,22 @@ class Write extends Component {
   }
 
   render() {
-    const bookToWrite = this.props.bookToWrite
+    const book = this.props.book
     const chapters = this.props.chapters
 
     return (
       <PageContainer title="Write">
         {
-          Array.isArray(bookToWrite) && bookToWrite.length
+          Array.isArray(book) && book.length
           ? <div className="Page--BooksWrite">
               <WriteContainer
-                book={bookToWrite[0]}
+                book={book[0]}
                 chapters={chapters}
                 onAddChapter={this.props.addChapter}
                 onDeleteChapter={this.onDeleteChapter.bind(this)}
               />
             </div>
-          : Array.isArray(bookToWrite) && !bookToWrite.length
+          : Array.isArray(book) && !book.length
             ? this.renderEmptyPageMessage()
             : null
         }
@@ -68,14 +68,14 @@ class Write extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    bookToWrite: state.books.bookToWrite,
+    book: state.books.currentlyWriting,
     chapters: state.chapters
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getBookToWrite: () => dispatch(requestBook(ownProps.match.params.id, ownProps.user)),
+    getCurrentlyWritingBook: () => dispatch(requestBook(ownProps.match.params.id, ownProps.user)),
     getChapters: () => dispatch(requestChapters(ownProps.match.params.id, ownProps.user)),
     addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user)),
     deleteChapter: (id) => dispatch(deleteChapter(id, ownProps.user)),

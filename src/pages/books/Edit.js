@@ -7,15 +7,15 @@ import EmptyPageMessage from '../../atoms/EmptyPageMessage'
 import {
   requestBook,
   editBook
-} from '../../actionCreators/bookToEdit'
+} from '../../actionCreators/currentlyEditing'
 
 class Edit extends Component {
   componentDidMount() {
-    this.props.getBookToEdit(this.props.match.params.id)
+    this.props.getCurrentlyEditingBook(this.props.match.params.id)
   }
 
   onSubmit(user, book) {
-    book = { ...book, id: this.props.bookToEdit[0]._id }
+    book = { ...book, id: this.props.book[0]._id }
     this.props.editBook(book, this.props.history, user)
   }
 
@@ -30,18 +30,18 @@ class Edit extends Component {
   }
 
   render() {
-    const bookToEdit = this.props.bookToEdit
+    const book = this.props.book
     return (
       <PageContainer title="Edit" className="Page--Books-add">
         {
-          Array.isArray(bookToEdit) && bookToEdit.length
+          Array.isArray(book) && book.length
           ? <BooksForm
             user={this.props.user}
             onSubmit={this.onSubmit.bind(this)}
             history={this.props.history}
-            book={bookToEdit[0]}
+            book={book[0]}
           />
-        : Array.isArray(bookToEdit) && !bookToEdit.length
+        : Array.isArray(book) && !book.length
           ? this.renderEmptyPageMessage()
           : null
         }
@@ -52,13 +52,13 @@ class Edit extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    bookToEdit: state.books.bookToEdit
+    book: state.books.currentlyEditing
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getBookToEdit: (id) => dispatch(requestBook(id, ownProps.user)),
+    getCurrentlyEditingBook: (id) => dispatch(requestBook(id, ownProps.user)),
     editBook: (bookData, history, user) => dispatch(editBook(bookData, history, user))
   }
 }

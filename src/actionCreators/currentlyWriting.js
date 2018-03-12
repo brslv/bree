@@ -1,7 +1,7 @@
 import {
   REQUEST_BOOK_TO_WRITE,
   RECEIVE_BOOK_TO_WRITE,
-} from '../actions/bookToWrite'
+} from '../actions/currentlyWriting'
 import {
   getBook,
 } from '../utils/db'

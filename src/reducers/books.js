@@ -8,16 +8,16 @@ import {
 import {
   REQUEST_BOOK_TO_WRITE,
   RECEIVE_BOOK_TO_WRITE,
-} from '../actions/bookToWrite'
+} from '../actions/currentlyWriting'
 import {
   REQUEST_BOOK_TO_EDIT,
   RECEIVE_BOOK_TO_EDIT,
-} from '../actions/bookToEdit'
+} from '../actions/currentlyEditing'
 
 const defaultState = {
   list: null,
-  bookToEdit: null,
-  bookToWrite: null
+  currentlyEditing: null,
+  currentlyWriting: null
 }
 
 export default (state = defaultState, action) => {
@@ -60,14 +60,14 @@ export default (state = defaultState, action) => {
       return Object.assign(
         {},
         state,
-        { bookToWrite: null }
+        { currentlyWriting: null }
       )
     }
     case RECEIVE_BOOK_TO_WRITE: {
       return Object.assign(
         {},
         state,
-        { bookToWrite: action.payload }
+        { currentlyWriting: action.payload }
       )
     }
 
@@ -75,14 +75,14 @@ export default (state = defaultState, action) => {
       return Object.assign(
         {},
         state,
-        { bookToEdit: null }
+        { currentlyEditing: null }
       )
     }
     case RECEIVE_BOOK_TO_EDIT: {
       return Object.assign(
         {},
         state,
-        { bookToEdit: action.payload }
+        { currentlyEditing: action.payload }
       )
     }
 
