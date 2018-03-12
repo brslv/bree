@@ -52,7 +52,7 @@ class Edit extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    bookToEdit: state.bookToEdit
+    bookToEdit: state.books.bookToEdit
   }
 }
 

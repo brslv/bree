@@ -68,7 +68,7 @@ class Write extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    bookToWrite: state.bookToWrite,
+    bookToWrite: state.books.bookToWrite,
     chapters: state.chapters
   }
 }

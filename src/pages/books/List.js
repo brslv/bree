@@ -42,7 +42,7 @@ class List extends Component {
 
 const mapStateToProps = state => {
   return {
-    books: state.books
+    books: state.books.list
   }
 }
 
