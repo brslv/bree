@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import BooksList from '../../components/books/BooksList'
-import { requestBooks } from '../../actionCreators/books'
 import PageContainer from '../../components/PageContainer'
 import {
   setConfirmation,
   unsetConfirmation
 } from '../../actionCreators/confirmation'
-import { deleteBook } from '../../actionCreators/books'
+import {
+  requestBooks,
+  deleteBook
+} from '../../actionCreators/books/list'
 import './List.css'
 
 class List extends Component {

@@ -7,7 +7,7 @@ import EmptyPageMessage from '../../atoms/EmptyPageMessage'
 import {
   requestBook,
   editBook
-} from '../../actionCreators/currentlyEditing'
+} from '../../actionCreators/books/currentlyEditing'
 
 class Edit extends Component {
   componentDidMount() {

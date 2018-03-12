@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PageContainer from '../../components/PageContainer'
 import EmptyPageMessage from '../../atoms/EmptyPageMessage'
-import { requestBook } from '../../actionCreators/currentlyWriting'
+import { requestBook } from '../../actionCreators/books/currentlyWriting'
 import WriteContainer from '../../components/books/WriteContainer'
 import './Write.css'
 import {

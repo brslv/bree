@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import BooksForm from '../../components/books/BooksForm'
 import PageContainer from '../../components/PageContainer'
-import { addBook } from '../../actionCreators/books'
+import { addBook } from '../../actionCreators/books/list'
 
 class Add extends Component {
   render() {

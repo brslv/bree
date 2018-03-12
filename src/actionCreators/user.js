@@ -20,7 +20,7 @@ import {
   successfullRegistration,
   userAlreadyExists
 } from '../notifications'
-import { clearBooks } from './books'
+import { clearBooks } from './books/list'
 
 const registerReady = registerData => {
   return { type: REGISTER_READY, payload: registerData }

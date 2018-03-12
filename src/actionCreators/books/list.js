@@ -4,24 +4,24 @@ import {
   BOOK_ADDED,
   BOOK_DELETED,
   CLEAR_BOOKS
-} from '../actions/books'
+} from '../../actions/books/list'
 import {
   getAllBooks,
   addBook as addNewBook,
   deleteBook as deleteExistingBook
-} from '../utils/db'
+} from '../../utils/db'
 import {
   startLoading,
   stopLoading
-} from './isLoading'
-import { addNotification } from '../actionCreators/notifications'
+} from '../isLoading'
+import { addNotification } from '../../actionCreators/notifications'
 import {
   bookAddFail,
   bookAddSuccess,
   bookDeleteFail,
   bookDeleteSuccess,
   getAllBooksFail,
-} from '../notifications'
+} from '../../notifications'
 
 const requestBooks = (user) => {
   return async (dispatch) => {

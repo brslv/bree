@@ -1,14 +1,14 @@
 import {
   REQUEST_BOOK_TO_WRITE,
   RECEIVE_BOOK_TO_WRITE,
-} from '../actions/currentlyWriting'
+} from '../../actions/books/currentlyWriting'
 import {
   getBook,
-} from '../utils/db'
+} from '../../utils/db'
 import {
   startLoading,
   stopLoading
-} from './isLoading'
+} from '../isLoading'
 
 const requestBook = (id, user) => {
   return async (dispatch) => {

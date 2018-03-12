@@ -3,20 +3,20 @@ import {
   RECEIVE_BOOK_TO_EDIT,
   BOOK_EDIT_START,
   BOOK_EDIT_END
-} from '../actions/currentlyEditing'
+} from '../../actions/books/currentlyEditing'
 import {
   getBook,
   editBook as editExistingBook
-} from '../utils/db'
+} from '../../utils/db'
 import {
   startLoading,
   stopLoading
-} from './isLoading'
+} from '../isLoading'
 import {
   bookEditSuccess,
   bookEditFail
-} from '../notifications'
-import { addNotification } from './notifications'
+} from '../../notifications'
+import { addNotification } from '../notifications'
 
 const requestBook = (id, user) => {
   return async (dispatch) => {
