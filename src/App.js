@@ -12,7 +12,6 @@ import Confirmation from './atoms/Confirmation'
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
 import Navigation from './components/navigation/Navigation'
-import Loader from './atoms/Loader'
 import NotificationsDrawer from './components/notifications/NotificationsDrawer'
 import HomePage from './pages/Home'
 import RegisterPage from './pages/Register'
@@ -22,6 +21,7 @@ import BooksAddPage from './pages/books/Add'
 import BooksEditPage from './pages/books/Edit'
 import BooksWritePage from './pages/books/Write'
 import { logout } from './actionCreators/user'
+import Loader from './HOC/Loader'
 
 class App extends Component {
   render() {
@@ -42,7 +42,6 @@ class App extends Component {
               <PrivateRoute exact path="/books/:id/write" user={this.props.user} component={BooksWritePage} />
 
               <NotificationsDrawer notifications={this.props.notifications} />
-              {this.props.isLoading ? <Loader /> : null}
 
               {
                 this.props.confirmation
@@ -80,4 +79,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Loader(App))
