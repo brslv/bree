@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import LoaderComponent from '../atoms/Loader'
 
-const Loader = (Wrapped) => {
-  return class Loader extends Component {
+const CanShowLoader = (Wrapped) => {
+  return class CanShowLoader extends Component {
     render() {
       return (
         <React.Fragment>
@@ -14,4 +14,4 @@ const Loader = (Wrapped) => {
   }
 }
 
-export default Loader
+export default CanShowLoader 

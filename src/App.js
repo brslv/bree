@@ -8,11 +8,9 @@ import {
   Route
 } from 'react-router-dom'
 import './App.css'
-import Confirmation from './atoms/Confirmation'
 import PrivateRoute from './components/routing/PrivateRoute'
 import GuestRoute from './components/routing/GuestRoute'
 import Navigation from './components/navigation/Navigation'
-import NotificationsDrawer from './components/notifications/NotificationsDrawer'
 import HomePage from './pages/Home'
 import RegisterPage from './pages/Register'
 import LoginPage from './pages/Login'
@@ -21,7 +19,9 @@ import BooksAddPage from './pages/books/Add'
 import BooksEditPage from './pages/books/Edit'
 import BooksWritePage from './pages/books/Write'
 import { logout } from './actionCreators/user'
-import Loader from './HOC/Loader'
+import CanShowLoader from './HOC/CanShowLoader'
+import CanShowConfirmations from './HOC/CanShowConfirmations'
+import CanShowNotifications from './HOC/CanShowNotifications'
 
 class App extends Component {
   render() {
@@ -31,7 +31,7 @@ class App extends Component {
           <Router>
             <React.Fragment>
 
-              {this.props.user ? <Navigation username={this.props.user.username} onLogout={this.props.logout} /> : ''}
+              {this.props.user ? <Navigation username={this.props.user.username} onLogout={this.props.logout} /> : null}
 
               <Route exact path="/" user={this.props.user} component={HomePage} />
               <GuestRoute path="/login" user={this.props.user} component={LoginPage} />
@@ -40,16 +40,6 @@ class App extends Component {
               <PrivateRoute exact path="/books/add" user={this.props.user} component={BooksAddPage} />
               <PrivateRoute exact path="/books/:id/edit" user={this.props.user} component={BooksEditPage} />
               <PrivateRoute exact path="/books/:id/write" user={this.props.user} component={BooksWritePage} />
-
-              <NotificationsDrawer notifications={this.props.notifications} />
-
-              {
-                this.props.confirmation
-                ? <Confirmation onConfirm={this.props.confirmation.onConfirm}>
-                    {this.props.confirmation.text}
-                  </Confirmation>
-                : null
-              }
 
             </React.Fragment>
           </Router>
@@ -76,7 +66,16 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+const WrappedApp = 
+  CanShowNotifications(
+    CanShowConfirmations(
+      CanShowLoader(
+        App
+      )
+    )
+  )
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Loader(App))
+)(WrappedApp)
