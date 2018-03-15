@@ -8,15 +8,16 @@ class WriteContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      addChapterModalIsHidden: true
+      addChapterModalIsHidden: true,
+      editChapterModalIsHidden: true,
     }
   }
 
-  openModal() {
+  openAddModal() {
     this.setState({ addChapterModalIsHidden: false })
   }
 
-  closeModal(e) {
+  closeAddModal(e) {
     this.setState({ addChapterModalIsHidden: true })
   }
 
@@ -28,16 +29,37 @@ class WriteContainer extends Component {
     this.props.onDeleteChapter(id)
   }
 
+  onChapterEditButtonClick(e, id) {
+    if (this.props.onChapterEditButtonClick) {
+      this.props.onChapterEditButtonClick(e, id)
+    }
+  }
+
   renderAddChapterModal() {
     return (
       <Modal
-        onEsc={this.closeModal.bind(this)}
-        onClose={this.closeModal.bind(this)}
+        onEsc={this.closeAddModal.bind(this)}
+        onClose={this.closeAddModal.bind(this)}
       >
         <AddChapterForm onSubmit={(chapterData) => {
           this.props.onAddChapter({ title: chapterData.title }, this.props.book._id)
-          this.closeModal()
+          this.closeAddModal()
         }} />
+      </Modal>
+    )
+  }
+
+  renderEditChapterModal(chapter) {
+    if (!chapter) {
+      return null
+    }
+
+    return (
+      <Modal
+        onEsc={this.props.closeEditChapterModal}
+        onClose={this.props.closeEditChapterModal}
+      >
+        {chapter[0].title}
       </Modal>
     )
   }
@@ -49,11 +71,13 @@ class WriteContainer extends Component {
 
         <ChaptersBox
           chapters={this.props.chapters}
-          onAddButtonClick={this.openModal.bind(this)}
+          onAddButtonClick={this.openAddModal.bind(this)}
           onDeleteButtonClick={this.onDeleteChapter.bind(this)}
+          onEditButtonClick={this.onChapterEditButtonClick.bind(this)}
         />
 
         {this.state.addChapterModalIsHidden ? null : this.renderAddChapterModal()}
+        {!this.props.editModalVisibility ? null : this.renderEditChapterModal(this.props.currentlyEditingChapter)}
       </div>
     )
   }

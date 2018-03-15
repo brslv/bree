@@ -3,7 +3,7 @@ import {
     RECEIVE_CHAPTERS,
     CHAPTER_ADDED,
     CHAPTER_DELETED
-} from '../actions/chapters'
+} from '../../actions/chapters/list'
 
 export default (state = [], action) => {
   switch(action.type) {

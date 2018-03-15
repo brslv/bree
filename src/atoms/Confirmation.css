@@ -1,6 +1,6 @@
 .Atom--Confirmation .overlay {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   top: 0;
@@ -10,7 +10,7 @@
 }
 
 .Atom--Confirmation .wrapper {
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   top: 0;
   height: 100%;

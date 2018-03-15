@@ -9,7 +9,12 @@ import {
   requestChapters,
   addChapter,
   deleteChapter
-} from '../../actionCreators/chapters';
+} from '../../actionCreators/chapters/list';
+import {
+  showEditChapterModal,
+  hideEditChapterModal,
+  editChapter
+} from '../../actionCreators/chapters/currentlyEditing'
 import {
   setConfirmation,
   unsetConfirmation
@@ -41,9 +46,23 @@ class Write extends Component {
     })
   }
 
+  onChapterEditButtonClick(e, id) {
+    this.props.showEditChapterModal(id)
+  }
+
+  closeEditChapterModal() {
+    this.props.hideEditChapterModal()
+  }
+
+  onChapterEditSubmitButtonClick() {
+    console.warn('chapter edit submit...handle chapter edit form submit')
+  }
+
   render() {
     const book = this.props.book
-    const chapters = this.props.chapters
+    const chapters = this.props.chapters.list
+    const currentlyEditingChapter = this.props.chapters.currentlyEditing
+    const editModalVisibility = this.props.chapters.editModalVisibility
 
     return (
       <PageContainer title="Write">
@@ -53,8 +72,13 @@ class Write extends Component {
               <WriteContainer
                 book={book[0]}
                 chapters={chapters}
+                currentlyEditingChapter={currentlyEditingChapter}
+                editModalVisibility={editModalVisibility}
+                closeEditChapterModal={this.closeEditChapterModal.bind(this)}
                 onAddChapter={this.props.addChapter}
                 onDeleteChapter={this.onDeleteChapter.bind(this)}
+                onChapterEditButtonClick={this.onChapterEditButtonClick.bind(this)}
+                onChapterEditSubmitButtonClick={this.onChapterEditSubmitButtonClick.bind(this)}
               />
             </div>
           : Array.isArray(book) && !book.length
@@ -69,7 +93,7 @@ class Write extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     book: state.books.currentlyWriting,
-    chapters: state.chapters
+    chapters: state.chapters,
   }
 }
 
@@ -78,6 +102,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     getCurrentlyWritingBook: () => dispatch(requestBook(ownProps.match.params.id, ownProps.user)),
     getChapters: () => dispatch(requestChapters(ownProps.match.params.id, ownProps.user)),
     addChapter: ({ title, content }, bookId) => dispatch(addChapter({ title, content}, bookId, ownProps.user)),
+    showEditChapterModal: (chapterId) => dispatch(showEditChapterModal(chapterId, ownProps.user)),
+    hideEditChapterModal: () => dispatch(hideEditChapterModal()),
+    editChapter: (chapter, history) => dispatch(editChapter(chapter, history, ownProps.user)),
     deleteChapter: (id) => dispatch(deleteChapter(id, ownProps.user)),
     setConfirmation: (text, onConfirm) => dispatch(setConfirmation(text, onConfirm)),
     unsetConfirmation: () => dispatch(unsetConfirmation())

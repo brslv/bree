@@ -105,6 +105,20 @@ const getChapters = function (bookId, user) {
   })
 }
 
+const getChapter = function (id, user) {
+  const authHash = user.authToken
+  const filters = JSON.stringify({
+    _id: id
+  })
+
+  return fetch(`${BASE_URL}/appdata/${APP_KEY}/chapters/?query=${filters}`, {
+    headers: {
+      'authorization': `Kinvey ${authHash}`,
+      'content-type': 'application/json'
+    }
+  })
+}
+
 const addChapter = function (chapter, bookId, user) {
   const authHash = user.authToken
 
@@ -186,6 +200,7 @@ export {
 
   /* chapters */
   getChapters,
+  getChapter,
   addChapter,
   deleteChapter,
 

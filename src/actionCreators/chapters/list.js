@@ -3,20 +3,20 @@ import {
   RECEIVE_CHAPTERS,
   CHAPTER_ADDED,
   CHAPTER_DELETED
-} from '../actions/chapters'
-import { startLoading, stopLoading } from './isLoading';
+} from '../../actions/chapters/list'
+import { startLoading, stopLoading } from '../isLoading';
 import {
   getChapters,
   addChapter as addNewChapter,
   deleteChapter as deleteExistingChapter
-} from '../utils/db'
-import { addNotification } from '../actionCreators/notifications'
+} from '../../utils/db'
+import { addNotification } from '../../actionCreators/notifications'
 import {
   chapterAddFail,
   chapterAddSuccess,
   chapterDeleteFail,
   chapterDeleteSuccess
-} from '../notifications/'
+} from '../../notifications/'
 
 const requestChapters = (bookId, user) => {
   return async (dispatch) => {

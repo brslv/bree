@@ -55,12 +55,17 @@ class ChaptersBox extends Component {
     }
   }
 
+  onEditButtonClick(id, e) {
+    this.props.onEditButtonClick(e, id)
+    this.setState({ chaptersListIsHidden: true })
+  }
+
   renderChapter(chapter, key) {
     return (
       <div key={key} className="chapter">
         <div className="title">{chapter.title}</div>
         <div className="controls">
-          <Button className="small stroke-only">Edit</Button>
+          <Button className="small stroke-only" onClick={this.onEditButtonClick.bind(this, key)}>Edit</Button>
           <Button className="small">Write</Button>
           <span className="delete-chapter" onClick={e => this.deleteButtonClick(e, key)}>&times;</span>
         </div>
